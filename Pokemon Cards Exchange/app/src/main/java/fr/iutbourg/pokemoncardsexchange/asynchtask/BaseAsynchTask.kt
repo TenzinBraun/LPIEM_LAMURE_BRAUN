@@ -1,9 +1,14 @@
 package fr.iutbourg.pokemoncardsexchange.asynchtask
 
-open class BaseAsynchTask: APILinker {
+open class BaseAsynchTask{
 
-    override fun callAPIFor(name: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    fun makeURLFromUseCase(name: String): String {
+        TODO("not implemented")
+    }
+
+    open fun callAPIFor(name: String): String {
+        val url: String = makeURLFromUseCase(name)
+        return ""
     }
 
 }

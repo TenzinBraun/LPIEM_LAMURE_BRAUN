@@ -1,5 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.asynchtask
 
 interface APILinker {
-    fun callAPIFor(name: String)
+    fun callAPIFor(name: String): String
+    fun makeURLFromUseCase(name: String): String
 }
