@@ -2,10 +2,10 @@ package fr.iutbourg.pokemoncardsexchange.beans
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
-
-class Weakness {
+class Weakness: Serializable {
 
     @SerializedName("type")
     @Expose

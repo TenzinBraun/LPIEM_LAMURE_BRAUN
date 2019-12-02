@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="fr.iutbourg.pokemoncardsexchange">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -8,19 +11,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.ServiceActivity"></activity>
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".activity.SingleCardPage"
+            android:label="@string/title_activity_single_card_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.ServiceActivity" />
         <activity android:name=".activity.SplashScreenActivity" />
         <activity android:name=".activity.LoginScreenActivity" />
-        <activity android:name=".activity.PokedexActivity" />
-        <activity android:name=".activity.UserAccountActivity" />
-        <activity android:name=".activity.HomeScreenActivity">
+        <activity android:name=".activity.PokedexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.UserAccountActivity" />
+        <activity android:name=".activity.HomeScreenActivity"></activity>
         <activity android:name=".activity.BaseActivity" />
     </application>
 

@@ -2,9 +2,10 @@ package fr.iutbourg.pokemoncardsexchange.beans
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
-class Ability {
+class Ability: Serializable {
     @SerializedName("name")
     @Expose
     private var name: String? = null
