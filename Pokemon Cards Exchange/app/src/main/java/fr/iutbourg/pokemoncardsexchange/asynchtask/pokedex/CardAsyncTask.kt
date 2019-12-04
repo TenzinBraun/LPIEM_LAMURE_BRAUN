@@ -39,7 +39,9 @@ class PokedexAsyncTask {
             }
 
             override fun onResponse(call: Call<Pokedex>, response: Response<Pokedex>) {
-                response.body()?.getCards()?.run {
+                response.body()?.getCards()?.filter {
+                    it.supertype.equals("Pokémon")
+                }?.run {
                     block(this)
                 }
             }

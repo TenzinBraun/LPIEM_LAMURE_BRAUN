@@ -1,12 +1,16 @@
 package fr.iutbourg.pokemoncardsexchange.fragment.pokedex
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.LayoutRes
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
@@ -21,7 +25,6 @@ import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment(), PokedexView {
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
     private val pokedexAdapter = PokedexAdapter(pokedexActivity)
@@ -32,9 +35,7 @@ class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment()
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.pokedex_fragment, container, false)
-        linearLayoutManager = LinearLayoutManager(pokedexActivity)
-        linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        rootView.recyclerViewImage.layoutManager = linearLayoutManager
+        rootView.recyclerViewImage.layoutManager = GridLayoutManager(context,4)
         rootView.recyclerViewImage.adapter = pokedexAdapter
 
         return rootView
@@ -43,8 +44,6 @@ class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         pokedexPresenter.callAPIForPokedex(this)
-
-
     }
 
     override fun update(data: List<Card>) {
@@ -52,7 +51,7 @@ class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment()
     }
 }
 
-class PokedexAdapter(val pokedexActivity: PokedexActivity) : RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
+class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
 
     private var pokedex = emptyList<Card>()
 
@@ -76,25 +75,21 @@ class PokedexAdapter(val pokedexActivity: PokedexActivity) : RecyclerView.Adapte
     class PokedexHolder(
         v: View,
         pokedexActivity: PokedexActivity
-    ) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    ) : RecyclerView.ViewHolder(v) {
 
         private val view: View = v
         private var card: Card? = null
-
         init {
             v.setOnClickListener {
                 val intent = Intent(pokedexActivity, SingleCardPage::class.java)
                 intent.putExtra("card", card)
                 pokedexActivity.startActivity(intent)
             }
-        }
-        override fun onClick(v: View?) {
 
         }
-
         fun bindPhoto(card: Card) {
             this.card = card
-            Picasso.with(view.context).load(card.imageUrl).into(view.pokemon_picture)
+            Picasso.with(view.context).load(card.imageUrl).into(view.cardview.get(0) as ImageView)
         }
     }
 }
