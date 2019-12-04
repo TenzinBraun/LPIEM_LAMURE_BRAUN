@@ -23,7 +23,10 @@ import kotlinx.android.synthetic.main.page_list_fragment.view.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 
-class PokedexFragment(pokedexActivity: PokedexActivity, bottomAppBarFragment: BottomAppBarFragment) : Fragment(), PokedexView {
+class PokedexFragment(
+    pokedexActivity: PokedexActivity,
+    bottomAppBarFragment: BottomAppBarFragment
+) : Fragment(), PokedexView {
 
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
@@ -36,7 +39,7 @@ class PokedexFragment(pokedexActivity: PokedexActivity, bottomAppBarFragment: Bo
         savedInstanceState: Bundle?
     ): View? {
         rootView = inflater.inflate(R.layout.pokedex_fragment, container, false)
-        rootView.recyclerViewImage.layoutManager = GridLayoutManager(context,4)
+        rootView.recyclerViewImage.layoutManager = GridLayoutManager(context, 3)
         rootView.recyclerViewImage.adapter = pokedexAdapter
         rootView.recyclerViewImage.addOnScrollListener(customScrollListener)
         return rootView
@@ -57,7 +60,8 @@ class PokedexFragment(pokedexActivity: PokedexActivity, bottomAppBarFragment: Bo
     }
 }
 
-class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
+class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
+    RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
 
     private var pokedex = emptyList<Card>()
 
@@ -85,6 +89,7 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerVie
 
         private val view: View = v
         private var card: Card? = null
+
         init {
             v.setOnClickListener {
                 val intent = Intent(pokedexActivity, SingleCardPage::class.java)
@@ -93,6 +98,7 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerVie
             }
 
         }
+
         fun bindPhoto(card: Card) {
             this.card = card
             Picasso.with(view.context).load(card.imageUrl).into(view.cardview.get(0) as ImageView)
@@ -100,7 +106,8 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerVie
     }
 }
 
-class CustomScrollListener(bottomAppBarFragment: BottomAppBarFragment) : RecyclerView.OnScrollListener() {
+class CustomScrollListener(bottomAppBarFragment: BottomAppBarFragment) :
+    RecyclerView.OnScrollListener() {
 
     private val bottomAppBarPresenter = BottomAppBarPresenter(bottomAppBarFragment)
 

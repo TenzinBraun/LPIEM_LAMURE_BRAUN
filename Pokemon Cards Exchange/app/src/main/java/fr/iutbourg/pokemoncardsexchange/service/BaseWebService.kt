@@ -7,7 +7,7 @@ class BaseWebService {
         const val BASE_URL: String = "https://api.pokemontcg.io/v1/"
 
         object ApiURLCard {
-            const val ALL_CARDS: String = "cards?types=water"
+            const val ALL_CARDS: String = "cards?subtype=EX"
             const val CARD_ID: String = ALL_CARDS + "id"
             const val CARD_NATIONAL_POKEDEX_NUMBER: String = "nationalPokedexNumber"
             const val CARD_TYPE: String = "types"

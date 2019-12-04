@@ -24,17 +24,19 @@ class SingleCardPage : AppCompatActivity() {
             cardTypes.text = card.types!!.get(0)
         }
 
-        Picasso.with(cardPicture.context).load(card.imageUrl).into(cardPicture)
-
-
+        Picasso.with(cardPicture.context).load(card.imageUrlHiRes).into(cardPicture)
         for (value in PokemonColor.values()) {
             val string = cardColorType!![0].toUpperCase()
             if (string == "NORMAL" || string == "LIGHTNING") {
                 rootview.setBackgroundColor(Color.parseColor(PokemonColor.valueOf(string).hex))
                 cardName.setTextColor(Color.parseColor("#000000"))
+                cardTypes.setTextColor(Color.parseColor("#000000"))
+                cardHP.setTextColor(Color.parseColor("#000000"))
             } else if (string == value.name && string != "NORMAL" && string != "LIGHTNING") {
                 rootview.setBackgroundColor(Color.parseColor(PokemonColor.valueOf(string).hex))
                 cardName.setTextColor(Color.parseColor("#FFFFFF"))
+                cardTypes.setTextColor(Color.parseColor("#FFFFFF"))
+                cardHP.setTextColor(Color.parseColor("#FFFFFF"))
             }
 
         }
@@ -57,7 +59,7 @@ enum class PokemonColor(val hex: String) {
     BUG("#A6B91A"),
     ROCK("#B6A136"),
     GHOST("#735797"),
-    DRAGON("#6F35FC"),
+    DRAGON("#614A25"),
     DARKNESS("#2D2E2B"),
     METAL("#B7B7CE"),
     FAIRY("#D685AD")
