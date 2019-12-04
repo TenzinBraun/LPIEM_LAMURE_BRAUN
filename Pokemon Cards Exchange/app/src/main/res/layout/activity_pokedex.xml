@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="1.0" />
 
     <FrameLayout
         android:id="@+id/pokedexContainer"
@@ -24,16 +24,31 @@
 
     </FrameLayout>
 
-    <Button
-        android:id="@+id/button"
+<!--    <Button style="@style/MainButtonShapeAction"-->
+<!--        android:id="@+id/button"-->
+
+<!--        android:text="Rechercher et Trier"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/pokedexContainer" />-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rechercher et Trier"
-        android:padding="8dp"
-        android:background="@drawable/rounded_button_action"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83" />
+
+    <FrameLayout
+        android:id="@+id/bottomAppBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokedexContainer" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.fragment.pokedex
 
 import android.content.Intent
-import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,23 +10,25 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.activity.PokedexActivity
 import fr.iutbourg.pokemoncardsexchange.activity.SingleCardPage
 import fr.iutbourg.pokemoncardsexchange.beans.Card
+import fr.iutbourg.pokemoncardsexchange.fragment.menu.BottomAppBarFragment
+import fr.iutbourg.pokemoncardsexchange.presenter.BottomAppBarPresenter
 import fr.iutbourg.pokemoncardsexchange.presenter.PokedexPresenter
 import kotlinx.android.synthetic.main.page_list_fragment.view.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 
-class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment(), PokedexView {
+class PokedexFragment(pokedexActivity: PokedexActivity, bottomAppBarFragment: BottomAppBarFragment) : Fragment(), PokedexView {
 
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
     private val pokedexAdapter = PokedexAdapter(pokedexActivity)
+    private val customScrollListener = CustomScrollListener(bottomAppBarFragment)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,8 +38,13 @@ class PokedexFragment(private val pokedexActivity: PokedexActivity) : Fragment()
         rootView = inflater.inflate(R.layout.pokedex_fragment, container, false)
         rootView.recyclerViewImage.layoutManager = GridLayoutManager(context,4)
         rootView.recyclerViewImage.adapter = pokedexAdapter
-
+        rootView.recyclerViewImage.addOnScrollListener(customScrollListener)
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.toString()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,6 +96,22 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) : RecyclerVie
         fun bindPhoto(card: Card) {
             this.card = card
             Picasso.with(view.context).load(card.imageUrl).into(view.cardview.get(0) as ImageView)
+        }
+    }
+}
+
+class CustomScrollListener(bottomAppBarFragment: BottomAppBarFragment) : RecyclerView.OnScrollListener() {
+
+    private val bottomAppBarPresenter = BottomAppBarPresenter(bottomAppBarFragment)
+
+    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+    }
+
+    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        when {
+            dy > 0 -> bottomAppBarPresenter.notifyMovingScroll(1)
+            dy < 0 -> bottomAppBarPresenter.notifyMovingScroll(2)
+            else -> bottomAppBarPresenter.notifyMovingScroll(0)
         }
     }
 }

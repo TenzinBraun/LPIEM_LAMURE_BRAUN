@@ -2,7 +2,6 @@ package fr.iutbourg.pokemoncardsexchange.activity
 
 import android.graphics.Color
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import fr.iutbourg.pokemoncardsexchange.R
@@ -18,9 +17,9 @@ class SingleCardPage : AppCompatActivity() {
         val card: Card = intent.getSerializableExtra("card") as Card
         val cardColorType = card.types
         cardName.text = card.name
-        cardHP.text = card.hp + "HP"
+        cardHP.text = (card.hp + "HP")
         if (card.types!!.size > 1) {
-            cardTypes.text = card.types!!.get(0) + " / " + card.types!!.get(1)
+            cardTypes.text = (card.types!!.get(0) + " / " + card.types!!.get(1))
         } else {
             cardTypes.text = card.types!!.get(0)
         }
