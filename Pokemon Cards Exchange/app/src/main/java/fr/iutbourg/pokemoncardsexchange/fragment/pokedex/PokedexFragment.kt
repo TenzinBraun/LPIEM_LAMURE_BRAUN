@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.iutbourg.pokemoncardsexchange.R
+import fr.iutbourg.pokemoncardsexchange.activity.CallBackScroll
 import fr.iutbourg.pokemoncardsexchange.activity.PokedexActivity
 import fr.iutbourg.pokemoncardsexchange.activity.SingleCardPage
 import fr.iutbourg.pokemoncardsexchange.beans.Card
-import fr.iutbourg.pokemoncardsexchange.fragment.menu.BottomAppBarFragment
-import fr.iutbourg.pokemoncardsexchange.presenter.BottomAppBarPresenter
 import fr.iutbourg.pokemoncardsexchange.presenter.PokedexPresenter
 import kotlinx.android.synthetic.main.page_list_fragment.view.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
@@ -25,13 +24,13 @@ import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 class PokedexFragment(
     pokedexActivity: PokedexActivity,
-    bottomAppBarFragment: BottomAppBarFragment
+    callBackSCroll: CallBackScroll
 ) : Fragment(), PokedexView {
 
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
     private val pokedexAdapter = PokedexAdapter(pokedexActivity)
-    private val customScrollListener = CustomScrollListener(bottomAppBarFragment)
+    private val customScrollListener = CustomScrollListener(callBackSCroll)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -106,19 +105,19 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
     }
 }
 
-class CustomScrollListener(bottomAppBarFragment: BottomAppBarFragment) :
+class CustomScrollListener(callBackScroll: CallBackScroll) :
     RecyclerView.OnScrollListener() {
 
-    private val bottomAppBarPresenter = BottomAppBarPresenter(bottomAppBarFragment)
+    private val callBackScroll = callBackScroll
 
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
     }
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         when {
-            dy > 0 -> bottomAppBarPresenter.notifyMovingScroll(1)
-            dy < 0 -> bottomAppBarPresenter.notifyMovingScroll(2)
-            else -> bottomAppBarPresenter.notifyMovingScroll(0)
+            dy > 0 -> callBackScroll.notiftyScroll(1)
+            dy < 0 -> callBackScroll.notiftyScroll(2)
+            else -> callBackScroll.notiftyScroll(0)
         }
     }
 }

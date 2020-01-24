@@ -13,10 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".activity.SingleCardPage"
-            android:label="@string/title_activity_single_card_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.SingleCardPage" />
         <activity android:name=".activity.ServiceActivity" />
         <activity android:name=".activity.SplashScreenActivity" />
         <activity android:name=".activity.LoginScreenActivity" />

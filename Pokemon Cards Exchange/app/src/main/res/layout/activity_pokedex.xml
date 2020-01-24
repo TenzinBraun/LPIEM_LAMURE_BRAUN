@@ -24,14 +24,14 @@
 
     </FrameLayout>
 
-<!--    <Button style="@style/MainButtonShapeAction"-->
-<!--        android:id="@+id/button"-->
+    <!--    <Button style="@style/MainButtonShapeAction"-->
+    <!--        android:id="@+id/button"-->
 
-<!--        android:text="Rechercher et Trier"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/pokedexContainer" />-->
+    <!--        android:text="Rechercher et Trier"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/pokedexContainer" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -40,8 +40,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.83" />
 
-    <FrameLayout
-        android:id="@+id/bottomAppBar"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +48,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7">
 
-    </FrameLayout>
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/myBottomAppBar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabAlignmentMode="center" />
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/researchFabMenuBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/research_pokemon_button_label"
+            app:layout_anchor="@id/myBottomAppBar"
+            android:textAlignment="center" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

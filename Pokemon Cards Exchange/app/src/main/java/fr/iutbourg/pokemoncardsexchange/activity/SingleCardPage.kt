@@ -16,27 +16,28 @@ class SingleCardPage : AppCompatActivity() {
         setContentView(R.layout.activity_single_card_page)
         val card: Card = intent.getSerializableExtra("card") as Card
         val cardColorType = card.types
-        cardName.text = card.name
-        cardHP.text = (card.hp + "HP")
-        if (card.types!!.size > 1) {
-            cardTypes.text = (card.types!!.get(0) + " / " + card.types!!.get(1))
-        } else {
-            cardTypes.text = card.types!!.get(0)
-        }
+//        cardName.text = card.name
+//        cardHP.text = (card.hp + "HP")
+//        if (card.types!!.size > 1) {
+//            cardTypes.text = (card.types!!.get(0) + " / " + card.types!!.get(1))
+//        } else {
+//            cardTypes.text = card.types!!.get(0)
+//        }
 
         Picasso.with(cardPicture.context).load(card.imageUrlHiRes).into(cardPicture)
         for (value in PokemonColor.values()) {
             val string = cardColorType!![0].toUpperCase()
             if (string == "NORMAL" || string == "LIGHTNING") {
+
                 rootview.setBackgroundColor(Color.parseColor(PokemonColor.valueOf(string).hex))
-                cardName.setTextColor(Color.parseColor("#000000"))
-                cardTypes.setTextColor(Color.parseColor("#000000"))
-                cardHP.setTextColor(Color.parseColor("#000000"))
+//                cardName.setTextColor(Color.parseColor("#000000"))
+//                cardTypes.setTextColor(Color.parseColor("#000000"))
+//                cardHP.setTextColor(Color.parseColor("#000000"))
             } else if (string == value.name && string != "NORMAL" && string != "LIGHTNING") {
                 rootview.setBackgroundColor(Color.parseColor(PokemonColor.valueOf(string).hex))
-                cardName.setTextColor(Color.parseColor("#FFFFFF"))
-                cardTypes.setTextColor(Color.parseColor("#FFFFFF"))
-                cardHP.setTextColor(Color.parseColor("#FFFFFF"))
+//                cardName.setTextColor(Color.parseColor("#FFFFFF"))
+//                cardTypes.setTextColor(Color.parseColor("#FFFFFF"))
+//                cardHP.setTextColor(Color.parseColor("#FFFFFF"))
             }
 
         }
@@ -45,22 +46,22 @@ class SingleCardPage : AppCompatActivity() {
 }
 
 enum class PokemonColor(val hex: String) {
-    NORMAL("#A8A77A"),
-    FIRE("#EE8130"),
-    WATER("#6390F0"),
-    LIGHTNING("#F7D02C"),
-    GRASS("#7AC74C"),
-    ICE("#96D9D6"),
-    FIGHTING("#C22E28"),
-    POISON("#A33EA1"),
-    GROUND("#E2BF65"),
-    FLYING("#A98FF3"),
-    PSYCHIC("#5A3954"),
-    BUG("#A6B91A"),
-    ROCK("#B6A136"),
-    GHOST("#735797"),
-    DRAGON("#614A25"),
-    DARKNESS("#2D2E2B"),
-    METAL("#B7B7CE"),
-    FAIRY("#D685AD")
+    NORMAL("#22A8A77A"),
+    FIRE("#22EE8130"),
+    WATER("#226390F0"),
+    LIGHTNING("#22F7D02C"),
+    GRASS("#227AC74C"),
+    ICE("#2296D9D6"),
+    FIGHTING("#22C22E28"),
+    POISON("#22A33EA1"),
+    GROUND("#22E2BF65"),
+    FLYING("#22A98FF3"),
+    PSYCHIC("#225A3954"),
+    BUG("#22A6B91A"),
+    ROCK("#22B6A136"),
+    GHOST("#22735797"),
+    DRAGON("#22614A25"),
+    DARKNESS("#222D2E2B"),
+    METAL("#22B7B7CE"),
+    FAIRY("#22D685AD")
 }
