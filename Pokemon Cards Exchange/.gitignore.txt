@@ -1,5 +1,7 @@
 # Created by https://www.gitignore.io/api/gradle,kotlin,android,intellij+all,androidstudio
 # Edit at https://www.gitignore.io/?templates=gradle,kotlin,android,intellij+all,androidstudio
+.*
+!/.gitignore
 ### Android ###
 # Built application files
 *.apk
