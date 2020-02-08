@@ -17,6 +17,7 @@ import fr.iutbourg.pokemoncardsexchange.activity.CallBackScroll
 import fr.iutbourg.pokemoncardsexchange.activity.PokedexActivity
 import fr.iutbourg.pokemoncardsexchange.activity.SingleCardPage
 import fr.iutbourg.pokemoncardsexchange.beans.Card
+import fr.iutbourg.pokemoncardsexchange.fragment.PokedexView
 import fr.iutbourg.pokemoncardsexchange.presenter.PokedexPresenter
 import kotlinx.android.synthetic.main.page_list_fragment.view.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
@@ -28,7 +29,7 @@ class PokedexFragment(
 
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
-    private val pokedexAdapter = PokedexAdapter(pokedexActivity)
+    private val pokedexAdapter = PokedexAdapter.getInstance(pokedexActivity)
     private val customScrollListener = CustomScrollListener(pokedexActivity)
 
     override fun onCreateView(
@@ -61,22 +62,30 @@ class PokedexFragment(
 class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
     RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
 
-    private var pokedex = emptyList<Card>()
+    var pokedex = emptyList<Card>()
+    var temp = pokedex
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexHolder {
         val inflatedView: View = parent.inflate(R.layout.page_list_fragment, false)
         return PokedexHolder(inflatedView, pokedexActivity)
     }
 
-    override fun getItemCount(): Int = pokedex.size
+    override fun getItemCount(): Int = temp.size
 
     override fun onBindViewHolder(holder: PokedexHolder, position: Int) {
-        val itemPhoto = pokedex[position]
+        val itemPhoto = temp[position]
         holder.bindPhoto(itemPhoto)
     }
 
     fun submitList(pokedex: List<Card>) {
+        this.temp = pokedex
         this.pokedex = pokedex
+        notifyDataSetChanged()
+    }
+
+    fun submitFilterList(pokedex: List<Card>) {
+        temp = pokedex
         notifyDataSetChanged()
     }
 
@@ -102,6 +111,16 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
             Picasso.with(view.context).load(card.imageUrl).into(view.cardview[0] as ImageView)
         }
     }
+
+    companion object InstanceAdapter {
+        var instance: PokedexAdapter? = null
+        fun getInstance(pokedexActivity: PokedexActivity): PokedexAdapter {
+            if (instance == null) {
+                instance = PokedexAdapter(pokedexActivity)
+            }
+            return instance as PokedexAdapter
+        }
+    }
 }
 
 class CustomScrollListener(private val callBackScroll: CallBackScroll) :
@@ -119,10 +138,6 @@ class CustomScrollListener(private val callBackScroll: CallBackScroll) :
     }
 }
 
-
-interface PokedexView {
-    fun update(data: List<Card>)
-}
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, attachToRoot)
