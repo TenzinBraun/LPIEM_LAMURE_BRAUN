@@ -16,16 +16,16 @@
         <activity android:name=".activity.SingleCardPage" />
         <activity android:name=".activity.ServiceActivity" />
         <activity android:name=".activity.SplashScreenActivity" />
-        <activity android:name=".activity.LoginScreenActivity" />
-        <activity android:name=".activity.PokedexActivity">
+        <activity android:name=".activity.LoginScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.PokedexActivity"/>
         <activity android:name=".activity.UserAccountActivity" />
-        <activity android:name=".activity.HomeScreenActivity"></activity>
+        <activity android:name=".activity.HomeScreenActivity" />
         <activity android:name=".activity.BaseActivity" />
     </application>
 
