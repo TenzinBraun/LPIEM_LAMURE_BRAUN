@@ -2,4 +2,5 @@
     <string name="app_name">Pokemon Cards Exchange</string>
     <string name="title_activity_single_card_page">SingleCardPage</string>
     <string name="research_pokemon_button_label">Rechercher un pokemon</string>
+    <string name="pokemon_name">Pokemon Name</string>
 </resources>

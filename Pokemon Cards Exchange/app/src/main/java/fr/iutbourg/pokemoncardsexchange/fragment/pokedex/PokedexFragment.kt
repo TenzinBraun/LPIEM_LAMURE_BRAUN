@@ -23,14 +23,13 @@ import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 
 class PokedexFragment(
-    pokedexActivity: PokedexActivity,
-    callBackSCroll: CallBackScroll
+    pokedexActivity: PokedexActivity
 ) : Fragment(), PokedexView {
 
     private val pokedexPresenter = PokedexPresenter()
     private lateinit var rootView: View
     private val pokedexAdapter = PokedexAdapter(pokedexActivity)
-    private val customScrollListener = CustomScrollListener(callBackSCroll)
+    private val customScrollListener = CustomScrollListener(pokedexActivity)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +54,7 @@ class PokedexFragment(
     }
 
     override fun update(data: List<Card>) {
-        pokedexAdapter.sumbitList(data)
+        pokedexAdapter.submitList(data)
     }
 }
 
@@ -76,7 +75,7 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
         holder.bindPhoto(itemPhoto)
     }
 
-    fun sumbitList(pokedex: List<Card>) {
+    fun submitList(pokedex: List<Card>) {
         this.pokedex = pokedex
         notifyDataSetChanged()
     }
@@ -100,15 +99,13 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
 
         fun bindPhoto(card: Card) {
             this.card = card
-            Picasso.with(view.context).load(card.imageUrl).into(view.cardview.get(0) as ImageView)
+            Picasso.with(view.context).load(card.imageUrl).into(view.cardview[0] as ImageView)
         }
     }
 }
 
-class CustomScrollListener(callBackScroll: CallBackScroll) :
+class CustomScrollListener(private val callBackScroll: CallBackScroll) :
     RecyclerView.OnScrollListener() {
-
-    private val callBackScroll = callBackScroll
 
     override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
     }
