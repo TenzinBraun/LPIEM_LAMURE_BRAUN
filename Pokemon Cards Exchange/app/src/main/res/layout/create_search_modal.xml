@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:padding="16dp"
         android:layout_marginTop="12dp"
-        android:background="#AAFFFFFF"
+        android:background="#FFFFFF"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -457,6 +457,7 @@
     </ScrollView>
 
     <Button
+        android:id="@+id/validateFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

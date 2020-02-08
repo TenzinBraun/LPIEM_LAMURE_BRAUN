@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.fragment.pokedex.PokedexFragment
 import kotlinx.android.synthetic.main.activity_pokedex.*
+import kotlinx.android.synthetic.main.create_search_modal.*
 
 class PokedexActivity : AppCompatActivity(), CallBackScroll {
 
@@ -26,6 +27,14 @@ class PokedexActivity : AppCompatActivity(), CallBackScroll {
         researchFabMenuBar.setOnClickListener {
             buildSearchModal()
         }
+        validateFilter.setOnClickListener{
+            buildFilterContent()
+        }
+    }
+
+    private fun buildFilterContent() {
+        val pokemonFilter = PokemonFilter()
+        pokemonFilter.append(inputNamePokemon)
     }
 
     private fun buildSearchModal() {
