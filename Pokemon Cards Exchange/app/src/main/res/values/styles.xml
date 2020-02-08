@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!-- Input Material on light element -->
     <style name="MaterialTextInputLayoutAppearance" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <!-- reference our hint & error styles -->
         <item name="boxStrokeColor">@color/colorPrimary</item>
@@ -16,10 +18,57 @@
     </style>
 
     <style name="MaterialTextInputEditTextAppearance" parent="">
-        <!-- reference our hint & error styles -->
         <item name="android:textColor">@color/colorPrimaryDark</item>
         <item name="android:textCursorDrawable">@null</item>
     </style>
+
+    <!-- Input Material on dark element -->
+    <style name="MaterialTextInputLayoutAppearanceOnDark" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorAccent</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="android:textColorHint">@color/colorPrimary</item>
+    </style>
+
+    <style name="MaterialTextInputEditTextAppearanceOnDark" parent="">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+
+    <style name="GroupeRelativeLayoutModal" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="TextViewModal" parent="">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ImgViewModal" parent="">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+    </style>
+
+    <style name="CheckBoxModal" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:checked">false</item>
+        <item name="android:buttonTint">@color/colorAccent</item>
+    </style>
+
+
+
 <!--    <style name="AppTheme.NoActionBar">-->
 <!--        <item name="windowActionBar">false</item>-->
 <!--        <item name="windowNoTitle">true</item>-->
