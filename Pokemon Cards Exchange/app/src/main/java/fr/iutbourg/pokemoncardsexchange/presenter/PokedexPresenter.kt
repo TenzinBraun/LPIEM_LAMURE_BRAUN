@@ -1,7 +1,7 @@
 package fr.iutbourg.pokemoncardsexchange.presenter
 
 import fr.iutbourg.pokemoncardsexchange.asynchtask.pokedex.PokedexAsyncTask
-import fr.iutbourg.pokemoncardsexchange.fragment.pokedex.PokedexView
+import fr.iutbourg.pokemoncardsexchange.fragment.PokedexView
 
 class PokedexPresenter {
 
@@ -10,5 +10,7 @@ class PokedexPresenter {
     fun callAPIForPokedex(view: PokedexView) {
         pokedexAsyncTask.getAllCardFromAPI(view::update)
     }
+
+
 
 }
