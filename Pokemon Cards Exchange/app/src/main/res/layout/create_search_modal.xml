@@ -83,7 +83,7 @@
                         <ImageView
                             android:id="@+id/logoElec"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/lightning_logo" />
 
                         <TextView
                             android:id="@+id/labelElec"
@@ -105,7 +105,7 @@
                         <ImageView
                             android:id="@+id/logoFire"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fire_logo" />
 
                         <TextView
                             android:id="@+id/labelFire"
@@ -127,7 +127,7 @@
                         <ImageView
                             android:id="@+id/logoPsy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/psychic_logo" />
 
                         <TextView
                             android:id="@+id/labelPsy"
@@ -149,7 +149,7 @@
                         <ImageView
                             android:id="@+id/logoSteel"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/steel_logo" />
 
                         <TextView
                             android:id="@+id/labelSteel"
@@ -179,7 +179,7 @@
                         <ImageView
                             android:id="@+id/logoDark"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/darkness_logo" />
 
                         <TextView
                             android:id="@+id/labelDark"
@@ -201,7 +201,7 @@
                         <ImageView
                             android:id="@+id/logoFairy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fairy_logo" />
 
                         <TextView
                             android:id="@+id/labelFairy"
@@ -223,7 +223,7 @@
                         <ImageView
                             android:id="@+id/logoDragon"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/dragon_logo" />
 
                         <TextView
                             android:id="@+id/labelDragon"
@@ -245,7 +245,7 @@
                         <ImageView
                             android:id="@+id/logoWater"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/water_logo" />
 
                         <TextView
                             android:id="@+id/labelWater"
@@ -267,7 +267,7 @@
                         <ImageView
                             android:id="@+id/logoFighting"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fighting_logo" />
 
                         <TextView
                             android:id="@+id/labelFighting"
@@ -295,7 +295,7 @@
                 <ImageView
                     android:id="@+id/logoIncolore"
                     style="@style/ImgViewModal"
-                    android:src="@drawable/grass_energy" />
+                    android:src="@drawable/colorless_logo" />
 
                 <TextView
                     android:id="@+id/labelIncolore"
