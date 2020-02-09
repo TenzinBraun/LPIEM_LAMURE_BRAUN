@@ -55,8 +55,7 @@
 
                     <RelativeLayout
                         android:id="@+id/planteGroupe"
-                        style="@style/GroupeRelativeLayoutModal"
-                        android:background="@drawable/rounded_button_action">
+                        style="@style/GroupeRelativeLayoutModal">
 
                         <ImageView
                             android:id="@+id/logoPlante"
@@ -78,8 +77,7 @@
                     <RelativeLayout
                         android:id="@+id/elecGroupe"
                         style="@style/GroupeRelativeLayoutModal"
-                        android:layout_below="@+id/planteGroupe"
-                        android:background="@drawable/rounded_button_action">
+                        android:layout_below="@+id/planteGroupe">
 
                         <ImageView
                             android:id="@+id/logoElec"
@@ -101,8 +99,7 @@
                     <RelativeLayout
                         android:id="@+id/fireGroupe"
                         style="@style/GroupeRelativeLayoutModal"
-                        android:layout_below="@+id/elecGroupe"
-                        android:background="@drawable/rounded_button_action">
+                        android:layout_below="@+id/elecGroupe">
 
                         <ImageView
                             android:id="@+id/logoFire"
@@ -124,8 +121,7 @@
                     <RelativeLayout
                         android:id="@+id/psyGroupe"
                         style="@style/GroupeRelativeLayoutModal"
-                        android:layout_below="@+id/fireGroupe"
-                        android:background="@drawable/rounded_button_action">
+                        android:layout_below="@+id/fireGroupe">
 
                         <ImageView
                             android:id="@+id/logoPsy"
@@ -147,8 +143,7 @@
                     <RelativeLayout
                         android:id="@+id/steelGroupe"
                         style="@style/GroupeRelativeLayoutModal"
-                        android:layout_below="@+id/psyGroupe"
-                        android:background="@drawable/rounded_button_action">
+                        android:layout_below="@+id/psyGroupe">
 
                         <ImageView
                             android:id="@+id/logoSteel"
@@ -178,8 +173,7 @@
 
                     <RelativeLayout
                         android:id="@+id/darkGroupe"
-                        style="@style/GroupeRelativeLayoutModal"
-                        android:background="@drawable/rounded_button_action">
+                        style="@style/GroupeRelativeLayoutModal">
 
                         <ImageView
                             android:id="@+id/logoDark"
