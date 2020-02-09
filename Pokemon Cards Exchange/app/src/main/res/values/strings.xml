@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Pokemon Cards Exchange</string>
+    <string name="title_activity_single_card_page">SingleCardPage</string>
+    <string name="research_pokemon_button_label">Rechercher un pokemon</string>
+    <string name="pokemon_name">Pokemon Name</string>
+    <string name="grass">Grass</string>
+    <string name="lightning">Lightning</string>
+    <string name="fire">Fire</string>
+    <string name="psychic">Psychic</string>
+    <string name="steel">Steel</string>
+    <string name="darkness">Darkness</string>
+    <string name="dragon">Dragon</string>
+    <string name="water">Water</string>
+    <string name="fighting">Fighting</string>
+    <string name="colorless">Colorless</string>
+    <string name="valider">Valider</string>
+    <string name="fairy">Fairy</string>
 </resources>

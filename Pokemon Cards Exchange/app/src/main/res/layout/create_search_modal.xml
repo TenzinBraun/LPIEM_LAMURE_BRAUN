@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollviewSearchModal"
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_marginTop="12dp"
+        android:background="#805E5E5E"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/namePokemon_input_layout"
+                style="@style/MaterialTextInputLayoutAppearanceOnDark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center_horizontal"
+                android:hint="@string/pokemon_name"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputNamePokemon"
+                    style="@style/MaterialTextInputEditTextAppearanceOnDark"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:id="@+id/selectEnergy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/namePokemon_input_layout"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:baselineAligned="false">
+
+                <RelativeLayout
+                    android:id="@+id/leftGroupeCheckbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:id="@+id/planteGroupe"
+                        style="@style/GroupeRelativeLayoutModal">
+
+                        <ImageView
+                            android:id="@+id/logoPlante"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/grass_energy"
+                            android:contentDescription="@string/grass" />
+
+                        <TextView
+                            android:id="@+id/labelPlante"
+                            android:layout_toEndOf="@+id/logoPlante"
+                            android:text="@string/grass"
+                            style="@style/TextViewModal"/>
+
+                        <CheckBox
+                            android:id="@+id/checkboxPlante"
+                            style="@style/CheckBoxModal" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/elecGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/planteGroupe">
+
+                        <ImageView
+                            android:id="@+id/logoElec"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/lightning_logo"
+                            android:contentDescription="@string/lightning" />
+
+                        <TextView
+                            android:id="@+id/labelElec"
+                            android:layout_toEndOf="@+id/logoElec"
+                            android:text="@string/lightning"
+                            style="@style/TextViewModal"/>
+
+                        <CheckBox
+                            android:id="@+id/checkboxElec"
+                            style="@style/CheckBoxModal"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/fireGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/elecGroupe">
+
+                        <ImageView
+                            android:id="@+id/logoFire"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/fire_logo"
+                            android:contentDescription="@string/fire" />
+
+                        <TextView
+                            android:id="@+id/labelFire"
+                            android:layout_toEndOf="@+id/logoFire"
+                            android:text="@string/fire"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxFire"
+                            style="@style/CheckBoxModal" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/psyGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/fireGroupe">
+
+                        <ImageView
+                            android:id="@+id/logoPsy"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/psychic_logo"
+                            android:contentDescription="@string/psychic" />
+
+                        <TextView
+                            android:id="@+id/labelPsy"
+                            android:layout_toEndOf="@+id/logoPsy"
+                            android:text="@string/psychic"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxPsy"
+                            style="@style/CheckBoxModal"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/steelGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/psyGroupe">
+
+                        <ImageView
+                            android:id="@+id/logoSteel"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/steel_logo"
+                            android:contentDescription="@string/steel" />
+
+                        <TextView
+                            android:id="@+id/labelSteel"
+                            android:layout_toEndOf="@+id/logoSteel"
+                            android:text="@string/steel"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxSteel"
+                            style="@style/CheckBoxModal" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rightGroupeCheckbox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="0.5">
+
+                    <RelativeLayout
+                        android:id="@+id/darkGroupe"
+                        style="@style/GroupeRelativeLayoutModal">
+
+                        <ImageView
+                            android:id="@+id/logoDark"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/darkness_logo"
+                            android:contentDescription="@string/darkness" />
+
+                        <TextView
+                            android:id="@+id/labelDark"
+                            android:layout_toEndOf="@+id/logoDark"
+                            android:text="@string/darkness"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxDark"
+                            style="@style/CheckBoxModal" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/fairyGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/darkGroupe"
+                        android:background="@drawable/rounded_button_action">
+
+                        <ImageView
+                            android:id="@+id/logoFairy"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/fairy_logo"
+                            android:contentDescription="@string/fairy" />
+
+                        <TextView
+                            android:id="@+id/labelFairy"
+                            android:layout_toEndOf="@+id/logoFairy"
+                            android:text="@string/fairy"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxFairy"
+                            style="@style/CheckBoxModal"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/dragonGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@id/fairyGroupe"
+                        android:background="@drawable/rounded_button_action">
+
+                        <ImageView
+                            android:id="@+id/logoDragon"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/dragon_logo"
+                            android:contentDescription="@string/dragon" />
+
+                        <TextView
+                            android:id="@+id/labelDragon"
+                            android:layout_toEndOf="@+id/logoDragon"
+                            android:text="@string/dragon"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxDragon"
+                            style="@style/CheckBoxModal" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/waterGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/dragonGroupe"
+                        android:background="@drawable/rounded_button_action">
+
+                        <ImageView
+                            android:id="@+id/logoWater"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/water_logo"
+                            android:contentDescription="@string/water" />
+
+                        <TextView
+                            android:id="@+id/labelWater"
+                            android:layout_toEndOf="@+id/logoWater"
+                            android:text="@string/water"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxWater"
+                            style="@style/CheckBoxModal"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/fightingGroupe"
+                        style="@style/GroupeRelativeLayoutModal"
+                        android:layout_below="@+id/waterGroupe"
+                        android:background="@drawable/rounded_button_action">
+
+                        <ImageView
+                            android:id="@+id/logoFighting"
+                            style="@style/ImgViewModal"
+                            android:src="@drawable/fighting_logo"
+                            android:contentDescription="@string/fighting" />
+
+                        <TextView
+                            android:id="@+id/labelFighting"
+                            android:layout_toEndOf="@+id/logoFighting"
+                            android:text="@string/fighting"
+                            style="@style/TextViewModal" />
+
+                        <CheckBox
+                            android:id="@+id/checkboxFighting"
+                            style="@style/CheckBoxModal"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/incoloreGroupe"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/selectEnergy"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/rounded_button_action">
+
+                <ImageView
+                    android:id="@+id/logoIncolore"
+                    style="@style/ImgViewModal"
+                    android:src="@drawable/colorless_logo"
+                    android:contentDescription="@string/colorless" />
+
+                <TextView
+                    android:id="@+id/labelIncolore"
+                    android:layout_toEndOf="@+id/logoIncolore"
+                    android:text="@string/colorless"
+                    style="@style/TextViewModal" />
+
+                <CheckBox
+                    android:id="@+id/checkboxIncolor"
+                    style="@style/CheckBoxModal" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/validateFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/valider"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>
