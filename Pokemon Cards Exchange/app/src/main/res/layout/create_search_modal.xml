@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
     android:layout_height="match_parent">
 
@@ -44,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/namePokemon_input_layout"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:baselineAligned="false">
 
                 <RelativeLayout
                     android:id="@+id/leftGroupeCheckbox"
@@ -60,12 +60,13 @@
                         <ImageView
                             android:id="@+id/logoPlante"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/grass_energy"
+                            android:contentDescription="@string/grass" />
 
                         <TextView
                             android:id="@+id/labelPlante"
                             android:layout_toEndOf="@+id/logoPlante"
-                            android:text="Plante"
+                            android:text="@string/grass"
                             style="@style/TextViewModal"/>
 
                         <CheckBox
@@ -81,12 +82,13 @@
                         <ImageView
                             android:id="@+id/logoElec"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/lightning_logo"
+                            android:contentDescription="@string/lightning" />
 
                         <TextView
                             android:id="@+id/labelElec"
                             android:layout_toEndOf="@+id/logoElec"
-                            android:text="Electrique"
+                            android:text="@string/lightning"
                             style="@style/TextViewModal"/>
 
                         <CheckBox
@@ -102,12 +104,13 @@
                         <ImageView
                             android:id="@+id/logoFire"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fire_logo"
+                            android:contentDescription="@string/fire" />
 
                         <TextView
                             android:id="@+id/labelFire"
                             android:layout_toEndOf="@+id/logoFire"
-                            android:text="Feu"
+                            android:text="@string/fire"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -123,12 +126,13 @@
                         <ImageView
                             android:id="@+id/logoPsy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/psychic_logo"
+                            android:contentDescription="@string/psychic" />
 
                         <TextView
                             android:id="@+id/labelPsy"
                             android:layout_toEndOf="@+id/logoPsy"
-                            android:text="Psy"
+                            android:text="@string/psychic"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -144,12 +148,13 @@
                         <ImageView
                             android:id="@+id/logoSteel"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/steel_logo"
+                            android:contentDescription="@string/steel" />
 
                         <TextView
                             android:id="@+id/labelSteel"
                             android:layout_toEndOf="@+id/logoSteel"
-                            android:text="Acier"
+                            android:text="@string/steel"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -173,12 +178,13 @@
                         <ImageView
                             android:id="@+id/logoDark"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/darkness_logo"
+                            android:contentDescription="@string/darkness" />
 
                         <TextView
                             android:id="@+id/labelDark"
                             android:layout_toEndOf="@+id/logoDark"
-                            android:text="Dark"
+                            android:text="@string/darkness"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -195,12 +201,13 @@
                         <ImageView
                             android:id="@+id/logoFairy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fairy_logo"
+                            android:contentDescription="@string/fairy" />
 
                         <TextView
                             android:id="@+id/labelFairy"
                             android:layout_toEndOf="@+id/logoFairy"
-                            android:text="Fée"
+                            android:text="@string/fairy"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -217,12 +224,13 @@
                         <ImageView
                             android:id="@+id/logoDragon"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/dragon_logo"
+                            android:contentDescription="@string/dragon" />
 
                         <TextView
                             android:id="@+id/labelDragon"
                             android:layout_toEndOf="@+id/logoDragon"
-                            android:text="Dragon"
+                            android:text="@string/dragon"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -239,12 +247,13 @@
                         <ImageView
                             android:id="@+id/logoWater"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/water_logo"
+                            android:contentDescription="@string/water" />
 
                         <TextView
                             android:id="@+id/labelWater"
                             android:layout_toEndOf="@+id/logoWater"
-                            android:text="Eau"
+                            android:text="@string/water"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -261,12 +270,13 @@
                         <ImageView
                             android:id="@+id/logoFighting"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy" />
+                            android:src="@drawable/fighting_logo"
+                            android:contentDescription="@string/fighting" />
 
                         <TextView
                             android:id="@+id/labelFighting"
                             android:layout_toEndOf="@+id/logoFighting"
-                            android:text="Combat"
+                            android:text="@string/fighting"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -289,12 +299,13 @@
                 <ImageView
                     android:id="@+id/logoIncolore"
                     style="@style/ImgViewModal"
-                    android:src="@drawable/grass_energy" />
+                    android:src="@drawable/colorless_logo"
+                    android:contentDescription="@string/colorless" />
 
                 <TextView
                     android:id="@+id/labelIncolore"
                     android:layout_toEndOf="@+id/logoIncolore"
-                    android:text="Incolore"
+                    android:text="@string/colorless"
                     style="@style/TextViewModal" />
 
                 <CheckBox
@@ -309,7 +320,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Valider"
+        android:text="@string/valider"
         android:layout_centerHorizontal="true" />
 
 
