@@ -40,6 +40,7 @@ class PokedexActivity : AppCompatActivity(), CallBackScroll {
         pokemonFilter.appendName(inputPokemonName)
             .appendCheckbox(getListOfEnergySelected(checkboxEnergy))
             .build()
+        checkboxEnergy.clear()
     }
 
     private fun getListOfEnergySelected(checkboxEnergy: MutableList<CheckBox>): List<CheckBox> {
@@ -84,7 +85,6 @@ class PokedexActivity : AppCompatActivity(), CallBackScroll {
             buildFilterContent()
             alertDialog.dismiss()
         }
-
         builder.setView(dialogView)
         alertDialog = builder.create()
         alertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
