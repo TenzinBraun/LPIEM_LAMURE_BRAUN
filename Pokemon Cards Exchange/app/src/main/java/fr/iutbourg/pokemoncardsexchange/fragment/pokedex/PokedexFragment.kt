@@ -63,7 +63,7 @@ class PokedexAdapter(private val pokedexActivity: PokedexActivity) :
     RecyclerView.Adapter<PokedexAdapter.PokedexHolder>() {
 
     var pokedex = emptyList<Card>()
-    var temp = pokedex
+    private var temp = pokedex
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexHolder {

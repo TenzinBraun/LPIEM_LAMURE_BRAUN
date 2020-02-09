@@ -66,7 +66,7 @@
                         <TextView
                             android:id="@+id/labelPlante"
                             android:layout_toEndOf="@+id/logoPlante"
-                            android:text="Plante"
+                            android:text="Grass"
                             style="@style/TextViewModal"/>
 
                         <CheckBox
@@ -88,7 +88,7 @@
                         <TextView
                             android:id="@+id/labelElec"
                             android:layout_toEndOf="@+id/logoElec"
-                            android:text="Electrique"
+                            android:text="Lightning"
                             style="@style/TextViewModal"/>
 
                         <CheckBox
@@ -110,7 +110,7 @@
                         <TextView
                             android:id="@+id/labelFire"
                             android:layout_toEndOf="@+id/logoFire"
-                            android:text="Feu"
+                            android:text="Fire"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -132,7 +132,7 @@
                         <TextView
                             android:id="@+id/labelPsy"
                             android:layout_toEndOf="@+id/logoPsy"
-                            android:text="Psy"
+                            android:text="Psychic"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -154,7 +154,7 @@
                         <TextView
                             android:id="@+id/labelSteel"
                             android:layout_toEndOf="@+id/logoSteel"
-                            android:text="Acier"
+                            android:text="Steel"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -184,7 +184,7 @@
                         <TextView
                             android:id="@+id/labelDark"
                             android:layout_toEndOf="@+id/logoDark"
-                            android:text="Dark"
+                            android:text="Darkness"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -206,7 +206,7 @@
                         <TextView
                             android:id="@+id/labelFairy"
                             android:layout_toEndOf="@+id/logoFairy"
-                            android:text="Fée"
+                            android:text="Fairy"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -250,7 +250,7 @@
                         <TextView
                             android:id="@+id/labelWater"
                             android:layout_toEndOf="@+id/logoWater"
-                            android:text="Eau"
+                            android:text="Water"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -272,7 +272,7 @@
                         <TextView
                             android:id="@+id/labelFighting"
                             android:layout_toEndOf="@+id/logoFighting"
-                            android:text="Combat"
+                            android:text="Fighting"
                             style="@style/TextViewModal" />
 
                         <CheckBox
@@ -300,7 +300,7 @@
                 <TextView
                     android:id="@+id/labelIncolore"
                     android:layout_toEndOf="@+id/logoIncolore"
-                    android:text="Incolore"
+                    android:text="Colorless"
                     style="@style/TextViewModal" />
 
                 <CheckBox
