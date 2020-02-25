@@ -12,7 +12,6 @@ import java.util.regex.Pattern
 class PokemonFilter(pokedexActivity: PokedexActivity) {
 
     private var queryName: String = String()
-    private var queryCheckBox = mutableListOf<CheckBox>()
     private val pokedexAdapter = PokedexAdapter.getInstance(pokedexActivity)
     private var filteredCardList = pokedexAdapter.pokedex
     private var energyNameList = listOf<String>()
@@ -37,20 +36,17 @@ class PokemonFilter(pokedexActivity: PokedexActivity) {
                 }
             }
             energyNameList.isNotEmpty() -> {
-                var card: String
                 val tempArrayList = mutableListOf<Card>()
-                for (it: Card in filteredCardList) {
-                    card = it.types?.get(0)!!
-
-                    if (energyNameList.any { string ->
+                filteredCardList.forEach { filterCard ->
+                    if (energyNameList.any { energyName ->
                             Pattern.compile(
-                                Pattern.quote(string),
+                                Pattern.quote(energyName),
                                 Pattern.CASE_INSENSITIVE
                             )
-                                .matcher(card)
+                                .matcher(filterCard.types?.get(0))
                                 .find()
                         })
-                        tempArrayList.add(it)
+                        tempArrayList.add(filterCard)
 
                 }
                 filteredCardList = tempArrayList
@@ -66,15 +62,12 @@ class PokemonFilter(pokedexActivity: PokedexActivity) {
     }
 
     fun appendCheckbox(listOfEnergySelected: List<CheckBox>): PokemonFilter {
-        queryCheckBox = listOfEnergySelected.filter { it.isChecked } as MutableList<CheckBox>
-        energyNameList = queryCheckBox.map {
+        energyNameList = listOfEnergySelected.filter { it.isChecked }.map {
             val viewGroup: ViewGroup = it.parent as ViewGroup
             val textView: TextView = viewGroup[1] as TextView
             textView.text.toString()
         }
-        queryCheckBox.clear()
         return this
     }
-
 }
 

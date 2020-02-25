@@ -36,6 +36,7 @@ class PokedexAsyncTask {
 
             override fun onFailure(call: Call<Pokedex>, t: Throwable) {
                 Log.d("TAGGG", "erreurrr")
+                Log.d("TAGGG", t.message)
             }
 
             override fun onResponse(call: Call<Pokedex>, response: Response<Pokedex>) {

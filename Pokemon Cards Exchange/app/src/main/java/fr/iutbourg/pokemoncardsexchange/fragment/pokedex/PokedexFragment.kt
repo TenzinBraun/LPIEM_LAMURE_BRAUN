@@ -41,7 +41,11 @@ class PokedexFragment(
         rootView.recyclerViewImage.layoutManager = GridLayoutManager(context, 3)
         rootView.recyclerViewImage.adapter = pokedexAdapter
         rootView.recyclerViewImage.addOnScrollListener(customScrollListener)
-        return rootView
+
+        return if (activity is PokedexActivity)
+            rootView
+        else
+            null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
