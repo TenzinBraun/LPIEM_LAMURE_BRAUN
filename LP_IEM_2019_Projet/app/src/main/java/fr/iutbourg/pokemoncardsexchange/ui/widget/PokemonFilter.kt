@@ -1,19 +1,15 @@
-package fr.iutbourg.pokemoncardsexchange.utils
+package fr.iutbourg.pokemoncardsexchange.ui.widget
 
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.view.get
-import fr.iutbourg.pokemoncardsexchange.activity.PokedexActivity
-import fr.iutbourg.pokemoncardsexchange.beans.Card
-import fr.iutbourg.pokemoncardsexchange.fragment.pokedex.PokedexAdapter
+import fr.iutbourg.pokemoncardsexchange.data.model.Card
 import java.util.regex.Pattern
 
-class PokemonFilter(pokedexActivity: PokedexActivity) {
+class PokemonFilter(private var filteredCardList: List<Card>) {
 
     private var queryName: String = String()
-    private val pokedexAdapter = PokedexAdapter.getInstance(pokedexActivity)
-    private var filteredCardList = pokedexAdapter.pokedex
     private var energyNameList = listOf<String>()
 
 
@@ -55,10 +51,9 @@ class PokemonFilter(pokedexActivity: PokedexActivity) {
         return this
     }
 
-    fun build() {
+    fun build(): List<Card> {
         filter()
-        pokedexAdapter.submitFilterList(filteredCardList)
-        filteredCardList = pokedexAdapter.pokedex
+        return filteredCardList
     }
 
     fun appendCheckbox(listOfEnergySelected: List<CheckBox>): PokemonFilter {
