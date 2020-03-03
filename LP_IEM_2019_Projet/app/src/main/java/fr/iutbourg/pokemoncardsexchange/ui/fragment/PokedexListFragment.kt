@@ -62,12 +62,12 @@ class PokedexListFragment : Fragment(), CallBackScroll {
 
         pokemonViewModel.pokedex.observe(this) {
             it.pokedex?.cards?.let { cardList ->
-
+                this.cardList = cardList
                 pokemonAdapter.submitList(cardList)
             }
         }
         activity?.researchFabMenuBar?.setOnClickListener {
-            buildSearchModal(cardList)
+            pokemonViewModel.showFilterPokemonDialog(cardList, pokemonAdapter, context!!,activity!!)
         }
     }
 
@@ -82,7 +82,8 @@ class PokedexListFragment : Fragment(), CallBackScroll {
 
         validateFilter.setOnClickListener {
             inputPokemonName = dialogView.findViewById<EditText>(R.id.inputNamePokemon).text.toString()
-            pokemonViewModel.filterPokemonList(cardList, checkboxEnergy, inputPokemonName).let { cardList -> pokemonAdapter.submitList(cardList) }
+//            pokemonViewModel.showFilterPokemonDialog(cardList, checkboxEnergy, inputPokemonName).let { cardList -> pokemonAdapter.submitList(cardList) }
+            checkboxEnergy.map { checkBox -> if(checkBox.isChecked) checkBox.isChecked = false }
             alertDialog.dismiss()
         }
         builder.setView(dialogView)

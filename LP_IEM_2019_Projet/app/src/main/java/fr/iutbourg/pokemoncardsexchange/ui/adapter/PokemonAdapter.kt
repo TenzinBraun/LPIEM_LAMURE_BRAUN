@@ -9,22 +9,20 @@ class PokedexAdapter :
     RecyclerView.Adapter<PokedexViewHolder>() {
 
     private var pokedex = emptyList<Card>()
-    private var pokedexTemp = pokedex
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokedexViewHolder {
         return PokedexViewHolder.create(parent)
     }
 
-    override fun getItemCount(): Int = pokedexTemp.size
+    override fun getItemCount(): Int = pokedex.size
 
     override fun onBindViewHolder(holder: PokedexViewHolder, position: Int) {
-        val itemPhoto = pokedexTemp[position]
+        val itemPhoto = pokedex[position]
         holder.bindPhoto(itemPhoto)
     }
 
     fun submitList(pokedex: List<Card>) {
-        this.pokedexTemp = pokedex
+        this.pokedex = pokedex
         notifyDataSetChanged()
-        pokedexTemp = this.pokedex
     }
 }
