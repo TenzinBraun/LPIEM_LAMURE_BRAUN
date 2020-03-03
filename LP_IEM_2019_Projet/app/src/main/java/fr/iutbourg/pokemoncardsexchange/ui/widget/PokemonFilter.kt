@@ -1,6 +1,5 @@
 package fr.iutbourg.pokemoncardsexchange.ui.widget
 
-import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -10,12 +9,10 @@ import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.get
 import androidx.fragment.app.FragmentActivity
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.Card
-import fr.iutbourg.pokemoncardsexchange.ui.activity.MainActivity
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
 import kotlinx.android.synthetic.main.create_search_modal.*
 import java.util.regex.Pattern
@@ -34,47 +31,31 @@ class PokemonFilter(private var filteredCardList: List<Card>, context: Context, 
 //        requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.window?.setBackgroundDrawableResource(android.R.color.transparent)
         setContentView(R.layout.create_search_modal)
-        buildSearchModal(cardList = filteredCardList)
+        buildCheckBoxList()
         validateFilter.setOnClickListener {
             inputPokemonName = findViewById<EditText>(R.id.inputNamePokemon).text.toString()
             adapter.submitList(build())
             checkboxEnergy.map { checkBox -> if (checkBox.isChecked) checkBox.isChecked = false }
             this.dismiss()
         }
-        setSizeforDialog(90, 1)
+        setSizeForDialog()
     }
 
-    fun setSizeforDialog(percentWidth: Int, percentHeight: Int) {
+    private fun setSizeForDialog() {
         val displayMetrics = DisplayMetrics()
         activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
         val lp = WindowManager.LayoutParams()
         lp.copyFrom(window?.attributes)
-        lp.width = displayMetrics.widthPixels * percentWidth / 100
-        when (percentHeight) {
+        lp.width = displayMetrics.widthPixels * 95 / 100
+        when (1) {
             0 -> lp.height = WindowManager.LayoutParams.MATCH_PARENT
             1 -> lp.height = WindowManager.LayoutParams.WRAP_CONTENT
-            else -> lp.height = displayMetrics.heightPixels * percentHeight / 100
+            else -> lp.height = displayMetrics.heightPixels * 1 / 100
         }
         this.window?.attributes = lp
     }
 
-    private fun buildSearchModal(cardList: List<Card>) {
-//        val viewGroup = this.findViewById<ViewGroup>(android.R.id.content)
-//        val dialogView =
-//            LayoutInflater.from(context).inflate(R.layout.create_search_modal, viewGroup, false)
-//        val validateFilter = dialogView.findViewById<Button>(R.id.validateFilter)
-
-        buildCheckBoxList()
-
-
-//        val builder = androidx.appcompat.app.AlertDialog.Builder(context!!)
-//        builder.setView(dialogView)
-//        window?.setBackgroundDrawableResource(android.R.color.transparent)
-//        this.setCancelable(true)
-//        this.setCanceledOnTouchOutside(true)
-    }
-
-    private fun buildCheckBoxList() {
+        private fun buildCheckBoxList() {
         val grassCheckbox = findViewById<CheckBox>(R.id.checkboxPlante)
         checkboxEnergy.add(grassCheckbox)
         val fireCheckBox = findViewById<CheckBox>(R.id.checkboxFire)
@@ -138,7 +119,7 @@ class PokemonFilter(private var filteredCardList: List<Card>, context: Context, 
         return this
     }
 
-    fun build(): List<Card> {
+    private fun build(): List<Card> {
         appendName(inputPokemonName)
         appendCheckbox(checkboxEnergy)
         filter()
