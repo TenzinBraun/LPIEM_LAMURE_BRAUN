@@ -62,7 +62,6 @@ class PokedexListFragment : Fragment(), CallBackScroll {
             pokemonViewModel.showFilterPokemonDialog(cardList, pokemonAdapter, context!!,activity!!)
         }
     }
-
     private fun submitResponseCode(responseCode: Int) {
         when (responseCode) {
             1 -> {
