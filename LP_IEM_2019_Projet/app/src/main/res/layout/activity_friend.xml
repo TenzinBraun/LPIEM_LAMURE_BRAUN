@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.PokedexActivity">
+    tools:context=".ui.activity.FriendActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -47,15 +47,6 @@
             android:layout_gravity="bottom"
             app:backgroundTint="@color/colorPrimary"
             app:fabAlignmentMode="center" />
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/researchFabMenuBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@string/research_pokemon_button_label"
-            app:layout_anchor="@id/myBottomAppBar"
-            android:textAlignment="center" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

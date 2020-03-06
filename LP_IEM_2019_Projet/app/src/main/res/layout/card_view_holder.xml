@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/pokemon_picture"
         style="@style/HeaderTitle"
-        android:layout_width="145dp"
+        android:layout_width="150dp"
         android:layout_height="160dp"
         android:layout_gravity="center" />
 </androidx.cardview.widget.CardView>

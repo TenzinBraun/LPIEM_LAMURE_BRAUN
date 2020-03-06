@@ -1,5 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.data.manager
 
+import fr.iutbourg.pokemoncardsexchange.data.networking.api.FriendApi
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.PokedexApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,9 +12,14 @@ import retrofit2.create
  */
 private object HttpClientManagerImpl : HttpClientManager {
 
-    override val retrofit: Retrofit =
+    override val pokedexRetrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl(PokedexApi.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    override val friendRetrofit: Retrofit =
+        Retrofit.Builder()
+            .baseUrl(FriendApi.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 }
@@ -26,18 +32,20 @@ interface HttpClientManager {
     /**
      * Instance of Retrofit used to create Api
      */
-    val retrofit: Retrofit
+    val pokedexRetrofit: Retrofit
+    val friendRetrofit: Retrofit
 
     companion object Instance {
         /**
          * Singleton for the interface
          */
-        val instance: HttpClientManager = HttpClientManagerImpl
+        val pokedexInstance: HttpClientManager = HttpClientManagerImpl
+        val friendInstance: HttpClientManager = HttpClientManagerImpl
 
     }
 
 }
 
 inline fun <reified T> HttpClientManager.createApi(): T {
-    return this.retrofit.create()
+    return this.pokedexRetrofit.create()
 }
