@@ -19,11 +19,25 @@ private class PokedexRepositoryImpl : PokedexRepository{
         }
         return data
     }
+
+    override fun getCardsForID(
+        viewModelScope: CoroutineScope,
+        token: String
+    ): LiveData<PokedexResponse> {
+        val data = MutableLiveData<PokedexResponse>()
+        viewModelScope.launch(Dispatchers.IO) {
+            val dataSource = PokedexDataSource.instance
+            data.postValue(dataSource.getCardsForID(token))
+        }
+        return data
+    }
 }
 
 interface PokedexRepository {
 
     fun getCards(scope: CoroutineScope): LiveData<PokedexResponse>
+    fun getCardsForID(viewModelScope: CoroutineScope, token: String): LiveData<PokedexResponse>
+
     companion object {
         /**
          * Singleton for the interface [PokedexRepository]

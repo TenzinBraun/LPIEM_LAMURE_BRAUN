@@ -11,6 +11,7 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.widget.CallBackScroll
@@ -18,7 +19,7 @@ import fr.iutbourg.pokemoncardsexchange.ui.widget.CustomScrollListener
 import kotlinx.android.synthetic.main.activity_pokedex.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
-class PokedexListFragment : Fragment(), CallBackScroll {
+class PokedexListFragment(val userID: Int) : Fragment(), CallBackScroll {
 
     private lateinit var pokemonViewModel: PokedexViewModel
     private lateinit var pokemonAdapter: PokedexAdapter
@@ -52,7 +53,7 @@ class PokedexListFragment : Fragment(), CallBackScroll {
         view.recyclerViewImage.adapter = pokemonAdapter
         view.recyclerViewImage.addOnScrollListener(customScrollListener)
 
-        pokemonViewModel.pokedex.observe(this) {
+        pokemonViewModel.getPokedexForID(PreferencesUtils.getString("token","token", context!!)!!).observe(this) {
             it.pokedex?.cards?.let { cardList ->
                 this.cardList = cardList
                 pokemonAdapter.submitList(cardList)

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import fr.iutbourg.pokemoncardsexchange.R
-import fr.iutbourg.pokemoncardsexchange.data.model.Friend
+import fr.iutbourg.pokemoncardsexchange.data.model.User
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.FriendAdapter
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.FriendViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.widget.CustomScrollListener
@@ -19,7 +19,7 @@ class FriendListFragment: Fragment() {
     private lateinit var friendViewModel: FriendViewModel
     private lateinit var friendAdapter: FriendAdapter
     private lateinit var customScrollListener: CustomScrollListener
-    private lateinit var friendList: List<Friend>
+    private lateinit var friendList: List<User>
 
 
     override fun onCreateView(
