@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.User
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.FriendAdapter
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.FriendViewModel
+import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.widget.CustomScrollListener
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
@@ -28,6 +30,9 @@ class FriendListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.run {
+            friendViewModel = ViewModelProvider(this, PokedexViewModel).get()
+        } ?: throw IllegalStateException("Invalid Activity")
         return inflater.inflate(R.layout.pokedex_fragment, container, false)
     }
 
@@ -36,7 +41,7 @@ class FriendListFragment: Fragment() {
         // We need to inject the OnCharacterClickListener in the constructor of the adapter
         friendAdapter = FriendAdapter()
 
-        view.recyclerViewImage.layoutManager = GridLayoutManager(activity, 3) as RecyclerView.LayoutManager?
+        view.recyclerViewImage.layoutManager = GridLayoutManager(activity, 3)
         view.recyclerViewImage.adapter = friendAdapter
         view.recyclerViewImage.addOnScrollListener(customScrollListener)
 

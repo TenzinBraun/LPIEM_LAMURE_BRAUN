@@ -2,6 +2,8 @@ package fr.iutbourg.pokemoncardsexchange.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.PokedexResponse
 import fr.iutbourg.pokemoncardsexchange.data.networking.datasource.PokedexDataSource
 import kotlinx.coroutines.CoroutineScope
@@ -44,6 +46,19 @@ private class PokedexRepositoryImpl : PokedexRepository{
         }
         return data
     }
+
+    override fun addCardToUserDB(
+        viewModelScope: CoroutineScope,
+        token: String,
+        cardID: String?
+    ) : LiveData<CardResponse>{
+        val data = MutableLiveData<CardResponse>()
+        viewModelScope.launch(Dispatchers.IO) {
+            val dataSource = PokedexDataSource.instance
+            data.postValue(dataSource.addCardToUserDB(token, cardID))
+        }
+        return data
+    }
 }
 
 interface PokedexRepository {
@@ -53,6 +68,8 @@ interface PokedexRepository {
     fun getCardsForFriend(viewModelScope: CoroutineScope,
                           token: String,
                           userID: Int): LiveData<PokedexResponse>
+
+    fun addCardToUserDB(viewModelScope: CoroutineScope, token: String, cardID: String?): LiveData<CardResponse>
 
     companion object {
         /**

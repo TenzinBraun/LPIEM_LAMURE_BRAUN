@@ -1,12 +1,11 @@
 package fr.iutbourg.pokemoncardsexchange.data.networking.api
 
-import android.content.SharedPreferences
+import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.Pokedex
-import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
-import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils.Companion.getString
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface PokedexApi {
@@ -35,6 +34,10 @@ interface PokedexApi {
     suspend fun getCardForFriend(@Header("token") token: String,
                                  @Path("userID") userID: Int): Response<Pokedex>
 
+    @POST(ApiURLCard.ADD_NEW_CARD)
+    suspend fun addCardToUserDB(@Header("token") token: String,
+                                @Path("userID") cardID: String?): Response<Card>
+
     companion object API{
 
         const val BASE_URL: String = "http://pokemoncardexchange.ddns.net/api/"
@@ -43,6 +46,7 @@ interface PokedexApi {
             const val ALL_CARDS: String = "cards"
             const val USER_CARDS: String = "user/cards"
             const val FRIEND_CARDS: String = "user/friends/{userID}/cards"
+            const val ADD_NEW_CARD: String = "user/cards/{cardID}"
         }
     }
 }

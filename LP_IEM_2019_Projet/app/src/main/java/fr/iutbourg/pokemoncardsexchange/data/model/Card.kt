@@ -78,3 +78,8 @@ class Card: Serializable {
     var ability: Ability? = null
 
 }
+
+data class CardResponse(
+    val card: Card? = null,
+    val error: Int = 0
+)

@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.PokedexResponse
 import fr.iutbourg.pokemoncardsexchange.data.repositories.PokedexRepository
+import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
-import fr.iutbourg.pokemoncardsexchange.ui.widget.PokemonFilter
+import fr.iutbourg.pokemoncardsexchange.ui.dialog.PokemonFilter
 
 class PokedexViewModel(private val
     repository: PokedexRepository
@@ -23,12 +25,17 @@ class PokedexViewModel(private val
     val pokedex = repository.getCards(viewModelScope)
 
     fun showFilterPokemonDialog(cards: List<Card>, adapter: PokedexAdapter, context: Context, activity: FragmentActivity) {
-        val pokedexFilter = PokemonFilter(cards, context, adapter, activity)
+        val pokedexFilter =
+            PokemonFilter(
+                cards,
+                context,
+                adapter,
+                activity
+            )
         pokedexFilter.show()
     }
-
-    fun getFriendCards(token: String, userID: Int): LiveData<PokedexResponse> {
-        return repository.getCardsForFriend(viewModelScope, token, userID)
+    fun addCardToUserDB(context: Context, cardID: String?): LiveData<CardResponse> {
+        return repository.addCardToUserDB(viewModelScope, PreferencesUtils.getString("current_user_token","token",context)!!, cardID)
     }
 
     companion object Factory : ViewModelProvider.Factory {
@@ -38,5 +45,3 @@ class PokedexViewModel(private val
         }
     }
 }
-
-typealias OnSuccess<T> = (T) -> Unit
