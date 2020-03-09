@@ -18,12 +18,22 @@ private class PokedexDataSourceImpl(private val api: PokedexApi) : PokedexDataSo
             PokedexResponse(error = 1)
         }
     }
+
+    override suspend fun getCardsForID(token: String): PokedexResponse {
+        val response = api.getAllCardForID(token)
+        return if (response.isSuccessful) {
+            val poke = response.body()
+            PokedexResponse(poke)
+        } else {
+            PokedexResponse(error = 1)
+        }
+    }
 }
 
 interface PokedexDataSource {
 
     suspend fun getCards(): PokedexResponse
-
+    suspend fun getCardsForID(token: String): PokedexResponse
     companion object {
         /**
          * Singleton for the interface [PokedexRepository]
