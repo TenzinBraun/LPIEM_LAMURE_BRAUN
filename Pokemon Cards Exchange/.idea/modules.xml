@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Pokemon Cards Exchange.iml" filepath="$PROJECT_DIR$/Pokemon Cards Exchange.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pokemon Cards Exchange.iml" filepath="$PROJECT_DIR$/Pokemon Cards Exchange.iml" group="Pokemon Cards Exchange" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Pokemon Cards Exchange/app" />
     </modules>
   </component>
 </project>
