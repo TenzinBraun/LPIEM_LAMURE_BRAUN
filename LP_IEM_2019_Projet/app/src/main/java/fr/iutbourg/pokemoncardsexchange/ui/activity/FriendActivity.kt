@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.ui.fragment.FriendListFragment
-import kotlinx.android.synthetic.main.activity_pokedex.*
+import kotlinx.android.synthetic.main.activity_friend.*
 
 class FriendActivity : AppCompatActivity() {
 
@@ -15,7 +15,7 @@ class FriendActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_pokedex)
+        setContentView(R.layout.activity_friend)
         configureFriendListFragment()
     }
 

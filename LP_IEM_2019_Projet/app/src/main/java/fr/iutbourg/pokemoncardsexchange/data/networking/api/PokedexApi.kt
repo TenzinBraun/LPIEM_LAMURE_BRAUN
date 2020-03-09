@@ -3,6 +3,7 @@ package fr.iutbourg.pokemoncardsexchange.data.networking.api
 import fr.iutbourg.pokemoncardsexchange.data.model.Pokedex
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
 
 interface PokedexApi {
 

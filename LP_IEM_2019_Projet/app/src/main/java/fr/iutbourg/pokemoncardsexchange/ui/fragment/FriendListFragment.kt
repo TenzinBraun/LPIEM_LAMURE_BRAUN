@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.Friend
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.FriendAdapter
@@ -35,7 +36,7 @@ class FriendListFragment: Fragment() {
         // We need to inject the OnCharacterClickListener in the constructor of the adapter
         friendAdapter = FriendAdapter()
 
-        view.recyclerViewImage.layoutManager = GridLayoutManager(activity, 3)
+        view.recyclerViewImage.layoutManager = GridLayoutManager(activity, 3) as RecyclerView.LayoutManager?
         view.recyclerViewImage.adapter = friendAdapter
         view.recyclerViewImage.addOnScrollListener(customScrollListener)
 

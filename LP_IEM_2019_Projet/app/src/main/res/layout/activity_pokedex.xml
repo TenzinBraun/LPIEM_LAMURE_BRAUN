@@ -14,7 +14,7 @@
         app:layout_constraintGuide_percent="1.0" />
 
     <FrameLayout
-        android:id="@+id/friendContainer"
+        android:id="@+id/pokedexContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
