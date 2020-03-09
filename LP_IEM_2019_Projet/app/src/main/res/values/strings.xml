@@ -15,4 +15,5 @@
     <string name="colorless">Colorless</string>
     <string name="valider">Valider</string>
     <string name="fairy">Fairy</string>
+    <string name="not_register_yet"> <i><u>Not register yet ?</u></i> </string>
 </resources>
