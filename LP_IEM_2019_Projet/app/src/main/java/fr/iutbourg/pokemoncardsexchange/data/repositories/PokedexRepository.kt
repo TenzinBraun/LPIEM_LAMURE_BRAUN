@@ -20,14 +20,27 @@ private class PokedexRepositoryImpl : PokedexRepository{
         return data
     }
 
-    override fun getCardsForID(
+    override fun getUserCards(
         viewModelScope: CoroutineScope,
         token: String
     ): LiveData<PokedexResponse> {
         val data = MutableLiveData<PokedexResponse>()
         viewModelScope.launch(Dispatchers.IO) {
             val dataSource = PokedexDataSource.instance
-            data.postValue(dataSource.getCardsForID(token))
+            data.postValue(dataSource.getUserCards(token))
+        }
+        return data
+    }
+
+    override fun getCardsForFriend(
+        viewModelScope: CoroutineScope,
+        token: String,
+        userID: Int
+    ): LiveData<PokedexResponse> {
+        val data = MutableLiveData<PokedexResponse>()
+        viewModelScope.launch(Dispatchers.IO) {
+            val dataSource = PokedexDataSource.instance
+            data.postValue(dataSource.getCardsForFriend(token, userID))
         }
         return data
     }
@@ -36,7 +49,10 @@ private class PokedexRepositoryImpl : PokedexRepository{
 interface PokedexRepository {
 
     fun getCards(scope: CoroutineScope): LiveData<PokedexResponse>
-    fun getCardsForID(viewModelScope: CoroutineScope, token: String): LiveData<PokedexResponse>
+    fun getUserCards(viewModelScope: CoroutineScope, token: String): LiveData<PokedexResponse>
+    fun getCardsForFriend(viewModelScope: CoroutineScope,
+                          token: String,
+                          userID: Int): LiveData<PokedexResponse>
 
     companion object {
         /**

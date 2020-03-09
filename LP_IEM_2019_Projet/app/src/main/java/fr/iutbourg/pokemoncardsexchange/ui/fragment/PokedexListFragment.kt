@@ -19,7 +19,7 @@ import fr.iutbourg.pokemoncardsexchange.ui.widget.CustomScrollListener
 import kotlinx.android.synthetic.main.activity_pokedex.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
-class PokedexListFragment(val userID: Int) : Fragment(), CallBackScroll {
+class PokedexListFragment(private val userID: Int) : Fragment(), CallBackScroll {
 
     private lateinit var pokemonViewModel: PokedexViewModel
     private lateinit var pokemonAdapter: PokedexAdapter
@@ -53,12 +53,28 @@ class PokedexListFragment(val userID: Int) : Fragment(), CallBackScroll {
         view.recyclerViewImage.adapter = pokemonAdapter
         view.recyclerViewImage.addOnScrollListener(customScrollListener)
 
-        pokemonViewModel.getPokedexForID(PreferencesUtils.getString("token","token", context!!)!!).observe(this) {
-            it.pokedex?.cards?.let { cardList ->
-                this.cardList = cardList
-                pokemonAdapter.submitList(cardList)
+        if(userID != PreferencesUtils.getInt("user", -1, context!!)) {
+            pokemonViewModel.getFriendCards(
+                PreferencesUtils.getString(
+                    "token",
+                    "token",
+                    context!!
+                )!!, userID
+            ).observe(this) {
+                it.pokedex?.cards?.let { cardList ->
+                    this.cardList = cardList
+                }
             }
+        }else {
+            pokemonViewModel.getUserCards(PreferencesUtils.getString("token", "token", context!!)!!)
+                .observe(this) {
+                    it.pokedex?.cards?.let { cardList ->
+                        this.cardList = cardList
+                        pokemonAdapter.submitList(cardList)
+                    }
+                }
         }
+
         activity?.researchFabMenuBar?.setOnClickListener {
             pokemonViewModel.showFilterPokemonDialog(cardList, pokemonAdapter, context!!,activity!!)
         }
