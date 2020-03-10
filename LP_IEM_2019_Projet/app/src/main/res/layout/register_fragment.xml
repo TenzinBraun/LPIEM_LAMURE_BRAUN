@@ -5,14 +5,173 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.RegisterFragment"
-    android:background="@android:color/transparent">
+    android:background="@color/transparent">
 
 
-    <TextView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15"/>
+
+    <androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline80Register"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.85"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical20Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVertical80Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/register_cardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TEST"
-        android:textSize="46sp"
-        android:textColor="@color/white"/>
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/whiteTransparent"
+        app:layout_constraintTop_toTopOf="@+id/guideline20Register"
+        app:layout_constraintBottom_toTopOf="@+id/guideline80Register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_email_input_layout"
+            style="@style/MaterialTextInputLayoutAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:hintEnabled="true"
+            android:hint="Email"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_email_editText"
+                style="@style/MaterialTextInputEditTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_name_input_layout"
+            style="@style/MaterialTextInputLayoutAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@id/register_email_input_layout"
+            app:hintEnabled="true"
+            android:hint="Name"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_name_editText"
+                style="@style/MaterialTextInputEditTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_firstname_input_layout"
+            style="@style/MaterialTextInputLayoutAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@id/register_name_input_layout"
+            app:hintEnabled="true"
+            android:hint="First name"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_firstname_editText"
+                style="@style/MaterialTextInputEditTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_input_layout"
+            style="@style/MaterialTextInputLayoutAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@id/register_firstname_input_layout"
+            app:hintEnabled="true"
+            android:hint="Password"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_password_editText"
+                style="@style/MaterialTextInputEditTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_confirmPassword_input_layout"
+            style="@style/MaterialTextInputLayoutAppearance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_below="@id/register_password_input_layout"
+            app:hintEnabled="true"
+            android:hint="Confirmation Password"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_confirmPassword_editText"
+                style="@style/MaterialTextInputEditTextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/register_cancel_button"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintTop_toTopOf="@id/guideline80Register"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelineVertical20Register"
+        app:layout_constraintEnd_toStartOf="@id/register_validate_button"
+        />
+    <Button
+        android:id="@+id/register_validate_button"
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="Ok"
+        app:layout_constraintTop_toTopOf="@id/guideline80Register"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/register_cancel_button"
+        app:layout_constraintEnd_toEndOf="@id/guidelineVertical80Register"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

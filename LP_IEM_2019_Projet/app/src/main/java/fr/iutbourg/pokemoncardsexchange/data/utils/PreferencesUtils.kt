@@ -39,5 +39,14 @@ class PreferencesUtils {
             configEditor.remove(key)
             configEditor.apply()
         }
+
+        fun saveInt(key: String, id: Int?, context: Context) {
+            val commonPreference = context.getSharedPreferences(COMMON_PREFERENCE,
+                Context.MODE_PRIVATE
+            )
+            val configEditor = commonPreference.edit()
+            configEditor.putInt(key, id!!)
+            configEditor.apply()
+        }
     }
 }

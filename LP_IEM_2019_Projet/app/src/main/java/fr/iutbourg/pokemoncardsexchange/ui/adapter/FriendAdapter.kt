@@ -24,7 +24,7 @@ class FriendAdapter : RecyclerView.Adapter<FriendViewHolder>() {
         holder.bindID(userID)
         holder.itemView.rootCard.setOnClickListener{
             val activity =  it.context as FriendActivity
-            val detailFriendFragment = PokedexListFragment(userID.id)
+            val detailFriendFragment = PokedexListFragment()
             activity.supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.friendContainer, detailFriendFragment)

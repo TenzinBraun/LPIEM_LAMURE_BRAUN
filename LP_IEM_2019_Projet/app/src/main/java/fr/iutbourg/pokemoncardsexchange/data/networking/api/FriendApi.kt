@@ -14,7 +14,7 @@ interface FriendApi {
     suspend fun getAllFriends(): Response<List<User>>
     companion object API{
 
-        const val BASE_URL: String = "https://api.pokemontcg.io/v1/"
+        const val BASE_URL: String = "http://pokemoncardexchange.ddns.net/api/"
 
         object ApiURLFriend {
             const val ALL_FRIEND: String = "cards?subtype=EX"

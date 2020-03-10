@@ -34,6 +34,7 @@ interface PokedexDataSource {
 
     suspend fun getCards(): PokedexResponse
     suspend fun getCardsForID(token: String): PokedexResponse
+
     companion object {
         /**
          * Singleton for the interface [PokedexRepository]
