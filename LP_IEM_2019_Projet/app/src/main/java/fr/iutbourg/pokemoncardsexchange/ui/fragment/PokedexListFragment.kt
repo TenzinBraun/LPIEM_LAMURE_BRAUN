@@ -19,7 +19,6 @@ import kotlinx.android.synthetic.main.activity_pokedex.*
 import kotlinx.android.synthetic.main.pokedex_fragment.view.*
 
 class PokedexListFragment : Fragment(), CallBackScroll {
-
     private lateinit var pokemonViewModel: PokedexViewModel
     private lateinit var pokemonAdapter: PokedexAdapter
     private lateinit var customScrollListener: CustomScrollListener
@@ -52,7 +51,7 @@ class PokedexListFragment : Fragment(), CallBackScroll {
         view.recyclerViewImage.adapter = pokemonAdapter
         view.recyclerViewImage.addOnScrollListener(customScrollListener)
 
-        pokemonViewModel.pokedex
+      pokemonViewModel.pokedex
             .observe(this) {
                 it.pokedex?.cards?.let { cardList ->
                     this.cardList = cardList

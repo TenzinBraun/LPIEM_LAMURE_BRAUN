@@ -34,7 +34,7 @@ class PokedexActivity : AppCompatActivity() {
     }
 
     private fun configurePokedexFragment() {
-        fragmentTransaction.add(friendContainer.id, pokedexFragment)
+        fragmentTransaction.add(pokedexContainer.id, pokedexFragment)
         fragmentTransaction.commit()
     }
 }

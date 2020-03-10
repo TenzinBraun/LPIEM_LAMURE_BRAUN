@@ -15,7 +15,7 @@ class FriendViewHolder private constructor(itemView: View) : RecyclerView.ViewHo
 
     fun bindID(friend: User) {
         val txt: TextView = itemView.cardview[1] as TextView
-        txt.text = friend.id.toString()
+        txt.text = friend.userID.toString()
     }
 
 

@@ -17,10 +17,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val notRegisterYetBtn = findViewById<TextView>(R.id.not_register_yet_btn)
         configureLoginFragment()
 
-        notRegisterYetBtn.setOnClickListener {
+        not_register_yet_btn.setOnClickListener {
             fragmentManager
                 .beginTransaction()
                 .replace(loginContainer.id, registerFragment)

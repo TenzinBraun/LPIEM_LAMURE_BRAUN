@@ -2,6 +2,9 @@ package fr.iutbourg.pokemoncardsexchange.data.manager
 
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.FriendApi
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.PokedexApi
+import fr.iutbourg.pokemoncardsexchange.data.networking.api.UserApi
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -12,14 +15,31 @@ import retrofit2.create
  */
 private object HttpClientManagerImpl : HttpClientManager {
 
+
+
+    val interptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    var client: OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(interptor)
+        .build()
+
     override val pokedexRetrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl(PokedexApi.BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+
     override val friendRetrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl(FriendApi.BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    override val userRetrofit: Retrofit =
+        Retrofit.Builder()
+            .baseUrl(UserApi.BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 }
@@ -34,6 +54,7 @@ interface HttpClientManager {
      */
     val pokedexRetrofit: Retrofit
     val friendRetrofit: Retrofit
+    val userRetrofit: Retrofit
 
     companion object Instance {
         /**
@@ -41,6 +62,7 @@ interface HttpClientManager {
          */
         val pokedexInstance: HttpClientManager = HttpClientManagerImpl
         val friendInstance: HttpClientManager = HttpClientManagerImpl
+        val userInstance: HttpClientManager = HttpClientManagerImpl
 
     }
 

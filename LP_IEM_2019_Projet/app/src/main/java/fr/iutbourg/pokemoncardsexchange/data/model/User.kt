@@ -1,18 +1,32 @@
 package fr.iutbourg.pokemoncardsexchange.data.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class User(
-    @SerializedName("token") val token: String,
-    @SerializedName("userID") val id: Int,
-    @SerializedName("name") val name: String,
-    @SerializedName("firstname") val firstName: String,
-    @SerializedName("sold") val sold: Double
+    @SerializedName("userID")
+    @Expose
+    val userID: Int?,
+    @SerializedName("email")
+    @Expose
+    val  email: String?,
+    @SerializedName("name")
+    @Expose
+    val  name: String?,
+    @SerializedName("firstname")
+    @Expose
+    val firstname: String?,
+    @SerializedName("token")
+    @Expose
+    val token: String?
+    //,
+    //val toto : String? = null
+
 )
 
-data class FriendResponse(
+data class UserResponse(
     val friend: List<User>? = null,
-    val message: Int = 1
+    val user : User? = null,
+    val error: String? = null
 )
-
 
