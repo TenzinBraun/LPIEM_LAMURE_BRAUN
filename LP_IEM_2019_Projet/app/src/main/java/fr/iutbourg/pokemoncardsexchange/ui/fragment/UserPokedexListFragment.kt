@@ -55,12 +55,11 @@ class UserPokedexListFragment : Fragment(), CallBackScroll {
 
         pokemonViewModel.getUserCards(PreferencesUtils.getString("token", "token", context!!)!!)
             .observe(this) {
-                it.pokedex?.cards?.let { cardList ->
-                    this.cardList = cardList
+                it.pokedex?.cards?.let { cardList -> this.cardList = cardList
                     pokemonAdapter.submitList(cardList)
                 }
-            }
 
+            }
         activity?.researchFabMenuBar?.setOnClickListener {
             pokemonViewModel.showFilterPokemonDialog(
                 cardList,

@@ -35,7 +35,7 @@ class FriendFilter(
         setSizeForDialog()
         activity.run {
             friendViewModel = ViewModelProvider(activity, PokedexViewModel).get()
-        } ?: throw IllegalStateException("Invalid Activity")
+        }
         inputUserNameEditText.addTextChangedListener {editable ->
             if (editable?.length!! > 3) {
                 friendViewModel.friends.observe(activity) { friendResponse ->

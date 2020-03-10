@@ -45,7 +45,7 @@ private class PokedexDataSourceImpl(private val api: PokedexApi) : PokedexDataSo
         val response = api.addCardToUserDB(token,cardID)
         return if (response.isSuccessful) {
             val card = response.body()
-            CardResponse(card.card)
+            CardResponse(card)
         } else {
             CardResponse(error = 1)
         }

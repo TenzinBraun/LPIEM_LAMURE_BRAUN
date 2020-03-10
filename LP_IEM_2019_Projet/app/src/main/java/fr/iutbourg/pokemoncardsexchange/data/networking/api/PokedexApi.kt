@@ -1,5 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.data.networking.api
 
+import fr.iutbourg.pokemoncardsexchange.data.model.Card
 import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.Pokedex
 import retrofit2.Response
