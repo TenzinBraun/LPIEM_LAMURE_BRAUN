@@ -50,8 +50,8 @@ class RegisterFragment : Fragment() {
                 register_firstname_editText.text.toString()
             ).observe(this) {
                 it.user.let {user ->
-                    user?.userID.let {
-                        PreferencesUtils.saveInt("current_user_id", user?.userID, context!!)
+                    user?.userID?.let {
+                        PreferencesUtils.saveInt("current_user_id", user.userID, context!!)
 
                     }
                     user?.name?.let {name ->
