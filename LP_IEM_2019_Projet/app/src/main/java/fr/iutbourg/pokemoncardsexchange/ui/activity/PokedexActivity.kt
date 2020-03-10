@@ -23,18 +23,18 @@ class PokedexActivity : AppCompatActivity() {
         configurePokedexFragment()
         myCard.setOnClickListener{
             fragmentManager.beginTransaction()
-                .replace(friendContainer.id, userPokedexListFragment)
+                .replace(pokedexContainer.id, userPokedexListFragment)
                 .commit()
         }
         allCard.setOnClickListener{
             fragmentManager.beginTransaction()
-                .replace(friendContainer.id, pokedexFragment)
+                .replace(pokedexContainer.id, pokedexFragment)
                 .commit()
         }
     }
 
     private fun configurePokedexFragment() {
-        fragmentTransaction.add(pokedexContainer.id, pokedexFragment)
+        fragmentTransaction.add(pokedexContainer.id, userPokedexListFragment)
         fragmentTransaction.commit()
     }
 }
