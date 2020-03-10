@@ -1,6 +1,7 @@
 package fr.iutbourg.pokemoncardsexchange.data.utils
 
 import android.content.Context
+import androidx.appcompat.app.AppCompatActivity
 
 
 class PreferencesUtils {
@@ -40,12 +41,25 @@ class PreferencesUtils {
             configEditor.apply()
         }
 
-        fun saveInt(key: String, id: Int?, context: Context) {
+        fun getInt(key: String,
+                   defaultVal: Int,
+                   context: Context
+        ): Int {
+            val commonPreference = context.getSharedPreferences(COMMON_PREFERENCE,
+                Context.MODE_PRIVATE
+            )
+            return commonPreference.getInt(key, defaultVal)
+        }
+
+        fun saveInt(key: String,
+                   value: Int,
+                   context: Context
+        ) {
             val commonPreference = context.getSharedPreferences(COMMON_PREFERENCE,
                 Context.MODE_PRIVATE
             )
             val configEditor = commonPreference.edit()
-            configEditor.putInt(key, id!!)
+            configEditor.putInt(key, value)
             configEditor.apply()
         }
     }

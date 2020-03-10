@@ -3,9 +3,10 @@ package fr.iutbourg.pokemoncardsexchange.ui.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.widget.PokedexViewHolder
 
-class PokedexAdapter :
+class PokedexAdapter(private val pokedexViewModel: PokedexViewModel) :
     RecyclerView.Adapter<PokedexViewHolder>() {
 
     private var pokedex = emptyList<Card>()
@@ -17,8 +18,11 @@ class PokedexAdapter :
     override fun getItemCount(): Int = pokedex.size
 
     override fun onBindViewHolder(holder: PokedexViewHolder, position: Int) {
-        val itemPhoto = pokedex[position]
-        holder.bindPhoto(itemPhoto)
+        val item = pokedex[position]
+        holder.bindPhoto(item)
+        holder.itemView.setOnClickListener{
+            pokedexViewModel.addCardToUserDB(it.context, item.id)
+        }
     }
 
     fun submitList(pokedex: List<Card>) {

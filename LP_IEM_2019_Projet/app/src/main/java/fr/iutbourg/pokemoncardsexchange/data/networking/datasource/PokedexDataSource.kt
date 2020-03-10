@@ -2,6 +2,8 @@ package fr.iutbourg.pokemoncardsexchange.data.networking.datasource
 
 import fr.iutbourg.pokemoncardsexchange.data.manager.HttpClientManager
 import fr.iutbourg.pokemoncardsexchange.data.manager.createApi
+import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.PokedexResponse
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.PokedexApi
 import fr.iutbourg.pokemoncardsexchange.data.repositories.PokedexRepository
@@ -19,8 +21,8 @@ private class PokedexDataSourceImpl(private val api: PokedexApi) : PokedexDataSo
         }
     }
 
-    override suspend fun getCardsForID(token: String): PokedexResponse {
-        val response = api.getAllCardForID(token)
+    override suspend fun getUserCards(token: String): PokedexResponse {
+        val response = api.getUserCards(token)
         return if (response.isSuccessful) {
             val poke = response.body()
             PokedexResponse(poke)
@@ -28,12 +30,34 @@ private class PokedexDataSourceImpl(private val api: PokedexApi) : PokedexDataSo
             PokedexResponse(error = 1)
         }
     }
+
+    override suspend fun getCardsForFriend(token: String, userID: Int): PokedexResponse? {
+        val response = api.getCardForFriend(token,userID)
+        return if (response.isSuccessful) {
+            val poke = response.body()
+            PokedexResponse(poke)
+        } else {
+            PokedexResponse(error = 1)
+        }
+    }
+
+    override suspend fun addCardToUserDB(token: String, cardID: String?): CardResponse {
+        val response = api.addCardToUserDB(token,cardID)
+        return if (response.isSuccessful) {
+            val card = response.body()
+            CardResponse(card)
+        } else {
+            CardResponse(error = 1)
+        }
+    }
 }
 
 interface PokedexDataSource {
 
     suspend fun getCards(): PokedexResponse
-    suspend fun getCardsForID(token: String): PokedexResponse
+    suspend fun getUserCards(token: String): PokedexResponse
+    suspend fun getCardsForFriend(token: String, userID: Int): PokedexResponse?
+    suspend fun addCardToUserDB(token: String, cardID: String?): CardResponse
 
     companion object {
         /**

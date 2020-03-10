@@ -1,5 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.ui.widget
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ class FriendViewHolder private constructor(itemView: View) : RecyclerView.ViewHo
         val txt: TextView = itemView.cardview[1] as TextView
         txt.text = friend.userID.toString()
     }
+
+
 
     companion object {
         /**

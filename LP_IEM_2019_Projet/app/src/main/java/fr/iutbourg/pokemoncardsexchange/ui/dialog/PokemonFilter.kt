@@ -1,11 +1,8 @@
-package fr.iutbourg.pokemoncardsexchange.ui.widget
+package fr.iutbourg.pokemoncardsexchange.ui.dialog
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
@@ -17,8 +14,10 @@ import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
 import kotlinx.android.synthetic.main.create_search_modal.*
 import java.util.regex.Pattern
 
-class PokemonFilter(private var filteredCardList: List<Card>, context: Context, private var adapter: PokedexAdapter, private var activity: FragmentActivity) :
-    Dialog(context) {
+class PokemonFilter(private var filteredCardList: List<Card>,
+                    context: Context, private var adapter: PokedexAdapter,
+                    private var activity: FragmentActivity) :
+    BaseDialog(context, activity) {
 
     private var queryName: String = String()
     private var energyNameList = listOf<String>()
@@ -28,7 +27,6 @@ class PokemonFilter(private var filteredCardList: List<Card>, context: Context, 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)
         this.window?.setBackgroundDrawableResource(android.R.color.transparent)
         setContentView(R.layout.create_search_modal)
         buildCheckBoxList()
@@ -39,20 +37,6 @@ class PokemonFilter(private var filteredCardList: List<Card>, context: Context, 
             this.dismiss()
         }
         setSizeForDialog()
-    }
-
-    private fun setSizeForDialog() {
-        val displayMetrics = DisplayMetrics()
-        activity.windowManager.defaultDisplay.getMetrics(displayMetrics)
-        val lp = WindowManager.LayoutParams()
-        lp.copyFrom(window?.attributes)
-        lp.width = displayMetrics.widthPixels * 95 / 100
-        when (1) {
-            0 -> lp.height = WindowManager.LayoutParams.MATCH_PARENT
-            1 -> lp.height = WindowManager.LayoutParams.WRAP_CONTENT
-            else -> lp.height = displayMetrics.heightPixels * 1 / 100
-        }
-        this.window?.attributes = lp
     }
 
         private fun buildCheckBoxList() {

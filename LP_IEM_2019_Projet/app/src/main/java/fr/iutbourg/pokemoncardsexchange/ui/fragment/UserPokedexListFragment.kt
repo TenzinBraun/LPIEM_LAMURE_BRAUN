@@ -11,14 +11,16 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.Card
+import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
 import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.widget.CallBackScroll
 import fr.iutbourg.pokemoncardsexchange.ui.widget.CustomScrollListener
 import kotlinx.android.synthetic.main.activity_pokedex.*
-import kotlinx.android.synthetic.main.pokedex_fragment.view.*
+import kotlinx.android.synthetic.main.user_pokedex_fragment.view.*
 
-class PokedexListFragment : Fragment(), CallBackScroll {
+class UserPokedexListFragment : Fragment(), CallBackScroll {
+
     private lateinit var pokemonViewModel: PokedexViewModel
     private lateinit var pokemonAdapter: PokedexAdapter
     private lateinit var customScrollListener: CustomScrollListener
@@ -37,7 +39,7 @@ class PokedexListFragment : Fragment(), CallBackScroll {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.pokedex_fragment, container, false)
+        return inflater.inflate(R.layout.user_pokedex_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,19 +49,17 @@ class PokedexListFragment : Fragment(), CallBackScroll {
         customScrollListener = CustomScrollListener(this)
         pokemonAdapter = PokedexAdapter(pokemonViewModel)
 
-        view.recyclerViewImage.layoutManager = GridLayoutManager(activity, 3)
-        view.recyclerViewImage.adapter = pokemonAdapter
-        view.recyclerViewImage.addOnScrollListener(customScrollListener)
+        view.userRecyclerViewImage.layoutManager = GridLayoutManager(activity, 3)
+        view.userRecyclerViewImage.adapter = pokemonAdapter
+        view.userRecyclerViewImage.addOnScrollListener(customScrollListener)
 
-      pokemonViewModel.pokedex
+        pokemonViewModel.getUserCards(PreferencesUtils.getString("token", "token", context!!)!!)
             .observe(this) {
-                it.pokedex?.cards?.let { cardList ->
-                    this.cardList = cardList
+                it.pokedex?.cards?.let { cardList -> this.cardList = cardList
                     pokemonAdapter.submitList(cardList)
                 }
+
             }
-
-
         activity?.researchFabMenuBar?.setOnClickListener {
             pokemonViewModel.showFilterPokemonDialog(
                 cardList,
