@@ -19,8 +19,8 @@ class UserViewModel (
         return repository.login(email, password, viewModelScope)
     }
 
-    fun auto_login(token: String): LiveData<UserResponse> {
-        return repository.auto_login(token, viewModelScope)
+    fun autoLogin(token: String): LiveData<UserResponse?> {
+        return repository.autoLogin(token, viewModelScope)
     }
 
     fun getInfos(token: String): LiveData<UserResponse> {

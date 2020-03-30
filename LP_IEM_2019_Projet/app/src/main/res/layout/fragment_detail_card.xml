@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardRootView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/background_card_detail" />
+
+    <RelativeLayout
+        android:id="@+id/infoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/pokemonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bulbausor"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pokemonIdPokedex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/pokemonName"
+            android:layout_alignParentEnd="true"
+            android:text="#"
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pokemonHP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pokemonType1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="4dp"
+            android:text="hp : "
+            android:textAlignment="textEnd"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/pokemonType1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pokemonName"
+            android:layout_margin="8dp"
+            android:background="@drawable/background_type"
+            android:padding="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+
+            <TextView
+                android:id="@+id/pokemonType1Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grass"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/pokemonType2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pokemonName"
+            android:layout_margin="8dp"
+            android:layout_toEndOf="@+id/pokemonType1"
+            android:background="@drawable/background_type"
+            android:padding="8dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/pokemonType2Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grass"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/bottomInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_info_bar"
+        android:scaleType="fitXY" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewHolder"
+        android:layout_width="225dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/infoContainer"
+        android:layout_centerHorizontal="true"
+        android:clipToPadding="true"
+        app:cardCornerRadius="16dp">
+
+        <ImageView
+            android:id="@+id/cardPicture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:id="@+id/attackContainer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardViewHolder"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/background_attack"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="12dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/energyContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/labelAttack1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="24dp"
+            android:text="GIGA IMPACT"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/labelAttackDamage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="120"
+            android:textAlignment="textEnd"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/attackContainer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/attackContainer1"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/background_attack"
+        android:backgroundTint="@color/colorAccent"
+        android:padding="12dp"
+        android:visibility="invisible">
+
+        <LinearLayout
+            android:id="@+id/energyContainer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_margin="4dp"
+                android:layout_weight="0.25"
+                android:src="@drawable/darkness_logo"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/labelAttack2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="24dp"
+            android:text="GIGA IMPACT"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/labelAttackDamage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="120"
+            android:textAlignment="textEnd"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textSpecialCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardViewHolder"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textAlignment="center"
+        android:lines="3"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+</RelativeLayout>

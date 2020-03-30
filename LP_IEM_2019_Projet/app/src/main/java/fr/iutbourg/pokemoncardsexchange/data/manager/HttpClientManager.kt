@@ -1,5 +1,6 @@
 package fr.iutbourg.pokemoncardsexchange.data.manager
 
+import fr.iutbourg.pokemoncardsexchange.data.networking.api.ExchangeApi
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.FriendApi
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.PokedexApi
 import fr.iutbourg.pokemoncardsexchange.data.networking.api.UserApi
@@ -14,7 +15,6 @@ import retrofit2.create
  * Implementation of [HttpClientManager]
  */
 private object HttpClientManagerImpl : HttpClientManager {
-
 
 
     val interptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -42,6 +42,12 @@ private object HttpClientManagerImpl : HttpClientManager {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    override val exchangeInstance: Retrofit =
+        Retrofit.Builder()
+            .baseUrl(ExchangeApi.BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 }
 
 /**
@@ -55,6 +61,7 @@ interface HttpClientManager {
     val pokedexRetrofit: Retrofit
     val friendRetrofit: Retrofit
     val userRetrofit: Retrofit
+    val exchangeInstance: Retrofit
 
     companion object Instance {
         /**
@@ -63,11 +70,24 @@ interface HttpClientManager {
         val pokedexInstance: HttpClientManager = HttpClientManagerImpl
         val friendInstance: HttpClientManager = HttpClientManagerImpl
         val userInstance: HttpClientManager = HttpClientManagerImpl
+        val exchangeInstance: HttpClientManager = HttpClientManagerImpl
 
     }
 
 }
 
-inline fun <reified T> HttpClientManager.createApi(): T {
+inline fun <reified T> HttpClientManager.createPokedexApi(): T {
     return this.pokedexRetrofit.create()
+}
+
+inline fun <reified T> HttpClientManager.createFriendApi(): T {
+    return this.friendRetrofit.create()
+}
+
+inline fun <reified T> HttpClientManager.createUserApi(): T {
+    return this.userRetrofit.create()
+}
+
+inline fun <reified T> HttpClientManager.createExchangeApi(): T {
+    return this.exchangeInstance.create()
 }

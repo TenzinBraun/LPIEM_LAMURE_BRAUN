@@ -12,8 +12,8 @@ import androidx.lifecycle.observe
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.model.User
 import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
+import fr.iutbourg.pokemoncardsexchange.ui.activity.FriendActivity
 import fr.iutbourg.pokemoncardsexchange.ui.activity.PokedexActivity
-import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.UserViewModel
 import kotlinx.android.synthetic.main.login_fragment.*
 
@@ -51,6 +51,16 @@ class LoginFragment : Fragment() {
                     }
                 }
         }
+        userViewModel.autoLogin(PreferencesUtils.getString("current_user_token", "", requireContext())!!)
+            .observe(this){
+                it?.user.let {user ->
+                    user?.token?.let {token ->
+                        PreferencesUtils.saveString("current_user_token", token, context!!)
+                        val intent = Intent(activity, FriendActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+            }
         super.onViewCreated(view, savedInstanceState)
     }
 }

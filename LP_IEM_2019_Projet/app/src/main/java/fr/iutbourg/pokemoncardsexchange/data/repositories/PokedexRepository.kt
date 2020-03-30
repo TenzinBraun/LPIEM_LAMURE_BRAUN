@@ -2,7 +2,6 @@ package fr.iutbourg.pokemoncardsexchange.data.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import fr.iutbourg.pokemoncardsexchange.data.model.Card
 import fr.iutbourg.pokemoncardsexchange.data.model.CardResponse
 import fr.iutbourg.pokemoncardsexchange.data.model.PokedexResponse
 import fr.iutbourg.pokemoncardsexchange.data.networking.datasource.PokedexDataSource
@@ -11,25 +10,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-private class PokedexRepositoryImpl : PokedexRepository{
+private class PokedexRepositoryImpl : PokedexRepository {
 
-    override fun getCards(scope: CoroutineScope): LiveData<PokedexResponse>{
-        val data = MutableLiveData<PokedexResponse>()
-        scope.launch(Dispatchers.IO) {
-            val dataSource = PokedexDataSource.instance
-            data.postValue(dataSource.getCards())
-        }
-        return data
-    }
 
     override fun getUserCards(
         viewModelScope: CoroutineScope,
-        token: String
+        token: String,
+        page: Int
     ): LiveData<PokedexResponse> {
         val data = MutableLiveData<PokedexResponse>()
         viewModelScope.launch(Dispatchers.IO) {
             val dataSource = PokedexDataSource.instance
-            data.postValue(dataSource.getUserCards(token))
+            data.postValue(dataSource.getUserCards(token, page))
         }
         return data
     }
@@ -51,7 +43,7 @@ private class PokedexRepositoryImpl : PokedexRepository{
         viewModelScope: CoroutineScope,
         token: String,
         cardID: String?
-    ) : LiveData<CardResponse>{
+    ): LiveData<CardResponse> {
         val data = MutableLiveData<CardResponse>()
         viewModelScope.launch(Dispatchers.IO) {
             val dataSource = PokedexDataSource.instance
@@ -62,14 +54,23 @@ private class PokedexRepositoryImpl : PokedexRepository{
 }
 
 interface PokedexRepository {
+    fun getUserCards(
+        viewModelScope: CoroutineScope,
+        token: String,
+        page: Int
+    ): LiveData<PokedexResponse>
 
-    fun getCards(scope: CoroutineScope): LiveData<PokedexResponse>
-    fun getUserCards(viewModelScope: CoroutineScope, token: String): LiveData<PokedexResponse>
-    fun getCardsForFriend(viewModelScope: CoroutineScope,
-                          token: String,
-                          userID: Int): LiveData<PokedexResponse>
+    fun getCardsForFriend(
+        viewModelScope: CoroutineScope,
+        token: String,
+        userID: Int
+    ): LiveData<PokedexResponse>
 
-    fun addCardToUserDB(viewModelScope: CoroutineScope, token: String, cardID: String?): LiveData<CardResponse>
+    fun addCardToUserDB(
+        viewModelScope: CoroutineScope,
+        token: String,
+        cardID: String?
+    ): LiveData<CardResponse>
 
     companion object {
         /**

@@ -38,11 +38,11 @@ private class UserRepositoryImpl : UserRepository {
         return data
     }
 
-    override fun auto_login(token: String, scope: CoroutineScope): LiveData<UserResponse> {
+    override fun autoLogin(token: String, scope: CoroutineScope): LiveData<UserResponse?> {
         val data = MutableLiveData<UserResponse>()
         scope.launch(Dispatchers.IO) {
             val dataSource = UserDataSource.instance
-            data.postValue(dataSource.auto_login(token))
+            data.postValue(dataSource.autoLogin(token))
         }
         return data
     }
@@ -76,7 +76,7 @@ private class UserRepositoryImpl : UserRepository {
 interface UserRepository {
     fun register(email: String, password: String, name: String, firstname: String, scope: CoroutineScope): LiveData<UserResponse>
     fun login(email: String, password: String, scope: CoroutineScope): LiveData<UserResponse>
-    fun auto_login(token: String, scope: CoroutineScope): LiveData<UserResponse>
+    fun autoLogin(token: String, scope: CoroutineScope): LiveData<UserResponse?>
     fun getInfos(token: String, scope: CoroutineScope): LiveData<UserResponse>
     fun update(email: String, name: String, firstname: String, scope: CoroutineScope): LiveData<UserResponse>
 

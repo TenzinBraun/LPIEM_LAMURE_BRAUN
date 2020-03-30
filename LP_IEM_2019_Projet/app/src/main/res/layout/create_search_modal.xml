@@ -1,50 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@android:color/transparent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
     <ScrollView
         android:id="@+id/scrollviewSearchModal"
         android:layout_width="match_parent"
-        android:padding="16dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:background="#805E5E5E"
-        android:layout_height="wrap_content">
+        android:padding="16dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/namePokemon_input_layout"
                 style="@style/MaterialTextInputLayoutAppearanceOnDark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="24dp"
                 android:layout_centerHorizontal="true"
+                android:layout_margin="24dp"
                 android:gravity="center_horizontal"
-                android:hint="@string/pokemon_name"
-                >
+                android:hint="@string/pokemon_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/inputNamePokemon"
                     style="@style/MaterialTextInputEditTextAppearanceOnDark"
                     android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
-                    />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:id="@+id/ownerCard"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/namePokemon_input_layout">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/labelOwner"
+                        style="@style/TextViewModal"
+                        android:text="Only My Card"/>
+
+                    <CheckBox
+                        android:id="@+id/onlyMyCards"
+                        style="@style/CheckBoxModalOwner"
+                        android:layout_toEndOf="@id/labelOwner"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/selectEnergy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/namePokemon_input_layout"
+                android:layout_below="@+id/ownerCard"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
-                android:weightSum="1"
-                android:baselineAligned="false">
+                android:weightSum="1">
 
                 <RelativeLayout
                     android:id="@+id/leftGroupeCheckbox"
@@ -60,14 +80,14 @@
                         <ImageView
                             android:id="@+id/logoPlante"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/grass_energy"
-                            android:contentDescription="@string/grass" />
+                            android:contentDescription="@string/grass"
+                            android:src="@drawable/grass_logo" />
 
                         <TextView
                             android:id="@+id/labelPlante"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoPlante"
-                            android:text="@string/grass"
-                            style="@style/TextViewModal"/>
+                            android:text="@string/grass" />
 
                         <CheckBox
                             android:id="@+id/checkboxPlante"
@@ -82,18 +102,18 @@
                         <ImageView
                             android:id="@+id/logoElec"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/lightning_logo"
-                            android:contentDescription="@string/lightning" />
+                            android:contentDescription="@string/lightning"
+                            android:src="@drawable/lightning_logo" />
 
                         <TextView
                             android:id="@+id/labelElec"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoElec"
-                            android:text="@string/lightning"
-                            style="@style/TextViewModal"/>
+                            android:text="@string/lightning" />
 
                         <CheckBox
                             android:id="@+id/checkboxElec"
-                            style="@style/CheckBoxModal"/>
+                            style="@style/CheckBoxModal" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -104,14 +124,14 @@
                         <ImageView
                             android:id="@+id/logoFire"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/fire_logo"
-                            android:contentDescription="@string/fire" />
+                            android:contentDescription="@string/fire"
+                            android:src="@drawable/fire_logo" />
 
                         <TextView
                             android:id="@+id/labelFire"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoFire"
-                            android:text="@string/fire"
-                            style="@style/TextViewModal" />
+                            android:text="@string/fire" />
 
                         <CheckBox
                             android:id="@+id/checkboxFire"
@@ -126,18 +146,18 @@
                         <ImageView
                             android:id="@+id/logoPsy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/psychic_logo"
-                            android:contentDescription="@string/psychic" />
+                            android:contentDescription="@string/psychic"
+                            android:src="@drawable/psychic_logo" />
 
                         <TextView
                             android:id="@+id/labelPsy"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoPsy"
-                            android:text="@string/psychic"
-                            style="@style/TextViewModal" />
+                            android:text="@string/psychic" />
 
                         <CheckBox
                             android:id="@+id/checkboxPsy"
-                            style="@style/CheckBoxModal"/>
+                            style="@style/CheckBoxModal" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -148,14 +168,14 @@
                         <ImageView
                             android:id="@+id/logoSteel"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/steel_logo"
-                            android:contentDescription="@string/steel" />
+                            android:contentDescription="@string/steel"
+                            android:src="@drawable/metal_logo" />
 
                         <TextView
                             android:id="@+id/labelSteel"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoSteel"
-                            android:text="@string/steel"
-                            style="@style/TextViewModal" />
+                            android:text="@string/steel" />
 
                         <CheckBox
                             android:id="@+id/checkboxSteel"
@@ -178,14 +198,14 @@
                         <ImageView
                             android:id="@+id/logoDark"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/darkness_logo"
-                            android:contentDescription="@string/darkness" />
+                            android:contentDescription="@string/darkness"
+                            android:src="@drawable/darkness_logo" />
 
                         <TextView
                             android:id="@+id/labelDark"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoDark"
-                            android:text="@string/darkness"
-                            style="@style/TextViewModal" />
+                            android:text="@string/darkness" />
 
                         <CheckBox
                             android:id="@+id/checkboxDark"
@@ -201,18 +221,18 @@
                         <ImageView
                             android:id="@+id/logoFairy"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/fairy_logo"
-                            android:contentDescription="@string/fairy" />
+                            android:contentDescription="@string/fairy"
+                            android:src="@drawable/fairy_logo" />
 
                         <TextView
                             android:id="@+id/labelFairy"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoFairy"
-                            android:text="@string/fairy"
-                            style="@style/TextViewModal" />
+                            android:text="@string/fairy" />
 
                         <CheckBox
                             android:id="@+id/checkboxFairy"
-                            style="@style/CheckBoxModal"/>
+                            style="@style/CheckBoxModal" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -224,14 +244,14 @@
                         <ImageView
                             android:id="@+id/logoDragon"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/dragon_logo"
-                            android:contentDescription="@string/dragon" />
+                            android:contentDescription="@string/dragon"
+                            android:src="@drawable/dragon_logo" />
 
                         <TextView
                             android:id="@+id/labelDragon"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoDragon"
-                            android:text="@string/dragon"
-                            style="@style/TextViewModal" />
+                            android:text="@string/dragon" />
 
                         <CheckBox
                             android:id="@+id/checkboxDragon"
@@ -247,18 +267,18 @@
                         <ImageView
                             android:id="@+id/logoWater"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/water_logo"
-                            android:contentDescription="@string/water" />
+                            android:contentDescription="@string/water"
+                            android:src="@drawable/water_logo" />
 
                         <TextView
                             android:id="@+id/labelWater"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoWater"
-                            android:text="@string/water"
-                            style="@style/TextViewModal" />
+                            android:text="@string/water" />
 
                         <CheckBox
                             android:id="@+id/checkboxWater"
-                            style="@style/CheckBoxModal"/>
+                            style="@style/CheckBoxModal" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -270,18 +290,18 @@
                         <ImageView
                             android:id="@+id/logoFighting"
                             style="@style/ImgViewModal"
-                            android:src="@drawable/fighting_logo"
-                            android:contentDescription="@string/fighting" />
+                            android:contentDescription="@string/fighting"
+                            android:src="@drawable/fighting_logo" />
 
                         <TextView
                             android:id="@+id/labelFighting"
+                            style="@style/TextViewModal"
                             android:layout_toEndOf="@+id/logoFighting"
-                            android:text="@string/fighting"
-                            style="@style/TextViewModal" />
+                            android:text="@string/fighting" />
 
                         <CheckBox
                             android:id="@+id/checkboxFighting"
-                            style="@style/CheckBoxModal"/>
+                            style="@style/CheckBoxModal" />
                     </RelativeLayout>
 
                 </RelativeLayout>
@@ -299,14 +319,14 @@
                 <ImageView
                     android:id="@+id/logoIncolore"
                     style="@style/ImgViewModal"
-                    android:src="@drawable/colorless_logo"
-                    android:contentDescription="@string/colorless" />
+                    android:contentDescription="@string/colorless"
+                    android:src="@drawable/colorless_logo" />
 
                 <TextView
                     android:id="@+id/labelIncolore"
+                    style="@style/TextViewModal"
                     android:layout_toEndOf="@+id/logoIncolore"
-                    android:text="@string/colorless"
-                    style="@style/TextViewModal" />
+                    android:text="@string/colorless" />
 
                 <CheckBox
                     android:id="@+id/checkboxIncolor"
@@ -320,8 +340,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="@string/valider"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/valider" />
 
 
 </RelativeLayout>

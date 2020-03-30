@@ -17,7 +17,7 @@
         android:id="@+id/friendContainer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/navContainer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,12 +32,12 @@
         app:layout_constraintGuide_percent="0.83" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@id/navContainer"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline7">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/myBottomAppBar"
@@ -45,8 +45,73 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:padding="16dp"
             app:backgroundTint="@color/colorPrimary"
-            app:fabAlignmentMode="center" />
+            app:fabAlignmentMode="center">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/allMyFriends"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/team"
+                    android:backgroundTint="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/historyExchangeCard"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/historyExchangeCard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/trust"
+                    app:layout_constraintBottom_toBottomOf="@+id/allMyFriends"
+                    app:layout_constraintEnd_toStartOf="@+id/placeholder"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/allMyFriends" />
+
+                <View
+                    android:id="@+id/placeholder"
+                    android:layout_width="70dp"
+                    android:layout_height="0dp"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="@+id/allMyFriends"
+                    app:layout_constraintEnd_toStartOf="@+id/searchPeople"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/historyExchangeCard"
+                    app:layout_constraintTop_toTopOf="@+id/allMyFriends" />
+
+                <ImageButton
+                    android:id="@+id/searchPeople"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:src="@drawable/person"
+                    app:layout_constraintBottom_toBottomOf="@+id/allMyFriends"
+                    app:layout_constraintEnd_toStartOf="@+id/newFriendsAdded"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/placeholder" />
+
+                <ImageButton
+                    android:id="@+id/newFriendsAdded"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/followers"
+                    android:backgroundTint="@android:color/transparent"
+                    app:layout_constraintBottom_toBottomOf="@+id/allMyFriends"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toEndOf="@+id/searchPeople"
+                    app:layout_constraintTop_toTopOf="@+id/allMyFriends" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

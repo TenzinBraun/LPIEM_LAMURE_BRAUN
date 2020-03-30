@@ -36,16 +36,16 @@ class FriendFilter(
         activity.run {
             friendViewModel = ViewModelProvider(activity, PokedexViewModel).get()
         }
-        inputUserNameEditText.addTextChangedListener {editable ->
-            if (editable?.length!! > 3) {
-                friendViewModel.friends.observe(activity) { friendResponse ->
-                    friendResponse.friend?.let { users ->
-                        filterUserList = users
-                        adapter.submitList(filterUserList)
-                    }
-                }
-            }
-        }
+//        inputUserNameEditText.addTextChangedListener { editable ->
+//            if (editable?.length!! > 3) {
+//                friendViewModel.friends.observe(activity) { friendResponse ->
+//                    friendResponse.friend?.let { users ->
+//                        filterUserList = users
+//                        adapter.submitList(filterUserList)
+//                    }
+//                }
+//            }
+//        }
     }
 
     private fun appendName(param: String): FriendFilter {

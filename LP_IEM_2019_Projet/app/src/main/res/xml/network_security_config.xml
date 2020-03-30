@@ -2,5 +2,6 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">pokemoncardexchange.ddns.net</domain>
+        <domain includeSubdomains="true">pokemontcg.ddns.net</domain>
     </domain-config>
 </network-security-config>

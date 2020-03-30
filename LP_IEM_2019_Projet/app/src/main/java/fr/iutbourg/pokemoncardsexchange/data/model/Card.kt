@@ -76,6 +76,9 @@ class Card: Serializable {
     @SerializedName("ability")
     @Expose
     var ability: Ability? = null
+    @SerializedName("owned")
+    @Expose
+    var owned: Boolean? = null
 
 }
 

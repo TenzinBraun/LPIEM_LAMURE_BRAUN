@@ -29,6 +29,13 @@ interface UserApi {
     @POST(ApiLoginURL.LOGIN)
     @FormUrlEncoded
     suspend fun autoLogin (
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): Response<User>
+
+
+    @POST(ApiLoginURL.AUTO_LOGIN)
+    suspend fun autoLogin (
         @Header("token") token: String
     ): Response<User>
 
@@ -47,12 +54,13 @@ interface UserApi {
     ): Response<User>
 
     companion object API{
-        const val BASE_URL: String = "http://pokemoncardexchange.ddns.net/api/"
+        const val BASE_URL: String = "http://pokemontcg.ddns.net/api/user/"
 
         object ApiLoginURL {
-            const val REGISTER: String = "user/register/"
-            const val LOGIN: String = "user/login/"
-            const val ME: String = "user/me/"
+            const val REGISTER: String = "register/"
+            const val LOGIN: String = "login/"
+            const val ME: String = "me/"
+            const val AUTO_LOGIN: String = "auto_login/"
         }
     }
 }

@@ -18,11 +18,10 @@ class PokedexViewModel(private val
     repository: PokedexRepository
 ): ViewModel(){
 
-    fun getUserCards(token: String): LiveData<PokedexResponse> {
-        return repository.getUserCards(viewModelScope, token)
+    fun getUserCards(token: String, page: Int): LiveData<PokedexResponse> {
+        return repository.getUserCards(viewModelScope, token, page)
     }
 
-    val pokedex = repository.getCards(viewModelScope)
 
     fun showFilterPokemonDialog(cards: List<Card>, adapter: PokedexAdapter, context: Context, activity: FragmentActivity) {
         val pokedexFilter =

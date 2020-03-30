@@ -14,9 +14,11 @@ import fr.iutbourg.pokemoncardsexchange.ui.adapter.PokedexAdapter
 import kotlinx.android.synthetic.main.create_search_modal.*
 import java.util.regex.Pattern
 
-class PokemonFilter(private var filteredCardList: List<Card>,
-                    context: Context, private var adapter: PokedexAdapter,
-                    private var activity: FragmentActivity) :
+class PokemonFilter(
+    private var filteredCardList: List<Card>,
+    context: Context, private var adapter: PokedexAdapter,
+    private var activity: FragmentActivity
+) :
     BaseDialog(context, activity) {
 
     private var queryName: String = String()
@@ -39,7 +41,7 @@ class PokemonFilter(private var filteredCardList: List<Card>,
         setSizeForDialog()
     }
 
-        private fun buildCheckBoxList() {
+    private fun buildCheckBoxList() {
         val grassCheckbox = findViewById<CheckBox>(R.id.checkboxPlante)
         checkboxEnergy.add(grassCheckbox)
         val fireCheckBox = findViewById<CheckBox>(R.id.checkboxFire)
@@ -76,9 +78,9 @@ class PokemonFilter(private var filteredCardList: List<Card>,
             queryName != "" -> {
                 filteredCardList = filteredCardList.filter {
                     Pattern.compile(
-                        Pattern.quote(queryName),
-                        Pattern.CASE_INSENSITIVE
-                    )
+                            Pattern.quote(queryName),
+                            Pattern.CASE_INSENSITIVE
+                        )
                         .matcher(it.name)
                         .find()
                 }
@@ -86,18 +88,24 @@ class PokemonFilter(private var filteredCardList: List<Card>,
             energyNameList.isNotEmpty() -> {
                 val tempArrayList = mutableListOf<Card>()
                 filteredCardList.forEach { filterCard ->
-                    if (energyNameList.any { energyName ->
-                            Pattern.compile(
-                                Pattern.quote(energyName),
-                                Pattern.CASE_INSENSITIVE
-                            )
-                                .matcher(filterCard.types?.get(0))
-                                .find()
-                        })
-                        tempArrayList.add(filterCard)
-
+                    filterCard.types?.let { types ->
+                        if (energyNameList.any { energyName ->
+                                Pattern.compile(
+                                        Pattern.quote(energyName),
+                                        Pattern.CASE_INSENSITIVE
+                                    )
+                                    .matcher(types[0])
+                                    .find()
+                            })
+                            tempArrayList.add(filterCard)
+                    }
                 }
                 filteredCardList = tempArrayList
+            }
+            onlyMyCards.isChecked -> {
+                filteredCardList = filteredCardList.filter {
+                    it.owned!!
+                }
             }
         }
         return this

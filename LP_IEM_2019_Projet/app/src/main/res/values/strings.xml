@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Pokemon Cards Exchange</string>
     <string name="title_activity_single_card_page">SingleCardPage</string>
-    <string name="research_pokemon_button_label">Rechercher</string>
+    <string name="research_pokemon_button_label">Rechercher pokemon</string>
     <string name="pokemon_name">Pokemon Name</string>
     <string name="grass">Grass</string>
     <string name="lightning">Lightning</string>
@@ -16,4 +16,8 @@
     <string name="valider">Valider</string>
     <string name="fairy">Fairy</string>
     <string name="not_register_yet"> <i><u>Not register yet ?</u></i> </string>
+    <string name="label_select_mycard">Choisissez d\'abord la carte que vous souhaitez échanger à votre ami</string>
+    <string name="select_friend_card">Choisissez la carte de votre ami</string>
+    <string name="select_friend_card_label">Choisissez ensuite la carte de votre ami que vous souhaitez échanger avec la votre</string>
+    <string name="validate_exchange_label">Valider maintenant l\'échange pour faire la proposition à votre ami</string>
 </resources>

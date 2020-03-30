@@ -11,6 +11,7 @@ import androidx.lifecycle.get
 import androidx.lifecycle.observe
 import fr.iutbourg.pokemoncardsexchange.R
 import fr.iutbourg.pokemoncardsexchange.data.utils.PreferencesUtils
+import fr.iutbourg.pokemoncardsexchange.ui.activity.FriendActivity
 import fr.iutbourg.pokemoncardsexchange.ui.activity.PokedexActivity
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.PokedexViewModel
 import fr.iutbourg.pokemoncardsexchange.ui.viewmodel.UserViewModel
@@ -60,7 +61,7 @@ class RegisterFragment : Fragment() {
                     user?.firstname?.let {firstname ->
                         PreferencesUtils.saveString("current_user_firstname",firstname, context!!)
                     }
-                    val intent = Intent(activity, PokedexActivity::class.java)
+                    val intent = Intent(activity, FriendActivity::class.java)
                     startActivity(intent)
                 }
             }
